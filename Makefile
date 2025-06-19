@@ -1,3 +1,20 @@
+
+# Colors
+RED     = \033[0;31m
+GREEN   = \033[0;32m
+YELLOW  = \033[0;33m
+BLUE    = \033[0;34m
+PURPLE  = \033[0;35m
+CYAN    = \033[0;36m
+WHITE   = \033[0;37m
+RESET   = \033[0m
+
+# Text formatting
+BOLD    = \033[1m
+DIM     = \033[2m
+ITALIC  = \033[3m
+UNDER   = \033[4m
+
 NAME = cub3D
 
 CC = cc
@@ -10,43 +27,62 @@ LIBFT = ./lib/libft
 
 PRINTF = ./lib/ftprintf
 
-SRC = srcs/main.c
+SRC = main.c
+SRC_DIR = srcs
+OBJ_DIR = objs
 
-OBJS = $(SRC:.c=.o)
+SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
+DIR_CREATE = mkdir -p $(OBJ_DIR)
 INCLUDES = -I./includes  -I$(MLX_42)/include -I$(LIBFT) -I$(PRINTF)
 
 LIBS = -L$(MLX_42)/build -lmlx42 -ldl -lglfw -pthread -lm -L$(LIBFT) -lft -L$(PRINTF) -lftprintf
 
 all:  $(MLX_42)/build/libmlx42.a $(LIBFT)/libft.a $(PRINTF)/libftprintf.a $(NAME)
+	@printf "$(GREEN)$(BOLD)✅ cub3D is ready!$(RESET)\n"
 
 $(MLX_42)/build/libmlx42.a:
-	@cmake $(MLX_42) -B $(MLX_42)/build && make -C $(MLX_42)/build -j4
+	@printf "$(CYAN)🚀 Building MLX42...$(RESET)\n"
+	@cmake $(MLX_42) -B $(MLX_42)/build >/dev/null && make -C $(MLX_42)/build -j4 >/dev/null
+	@printf "$(GREEN)✓ MLX42 built successfully$(RESET)\n"
 
 $(LIBFT)/libft.a:
-	@make -C $(LIBFT)
+	@printf "$(CYAN)📚 Building libft...$(RESET)\n"
+	@make -C $(LIBFT) >/dev/null
+	@printf "$(GREEN)✓ Libft built successfully$(RESET)\n"
 
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(LIBS)
 $(PRINTF)/libftprintf.a:
-	@make -C $(PRINTF)
+	@printf "$(CYAN)🖨️  Building ft_printf...$(RESET)\n"
+	@make -C $(PRINTF) >/dev/null
+	@printf "$(GREEN)✓ Printf built successfully$(RESET)\n"
 
 $(NAME): $(OBJS)
+	@printf "$(CYAN)🔨 Linking $(NAME)...$(RESET)\n"
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(LIBS)
+	@printf "$(GREEN)✓ Linking complete$(RESET)\n"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(DIR_CREATE)
+	@printf "$(CYAN)⚡ Compiling $<...$(RESET)\r"
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:
-	@make -C $(MLX_42)/build clean
-	@make -C $(LIBFT) clean
-	@make -C $(PRINTF) clean
-	@rm -f $(OBJS)
+	@printf "$(YELLOW)🧹 Cleaning object files...$(RESET)\n"
+	@make -C $(MLX_42)/build clean >/dev/null
+	@make -C $(LIBFT) clean >/dev/null
+	@make -C $(PRINTF) clean >/dev/null
+	@rm -rf $(OBJ_DIR)
+	@printf "$(GREEN)✓ Clean complete$(RESET)\n"
 
 fclean: clean
-	@make -C $(LIBFT) fclean
-	@make -C $(PRINTF) fclean
+	@printf "$(YELLOW)🗑️  Removing executables...$(RESET)\n"
+	@make -C $(LIBFT) fclean >/dev/null
+	@make -C $(PRINTF) fclean >/dev/null
 	@rm -f $(NAME)
+	@printf "$(GREEN)✓ Full clean complete$(RESET)\n"
 
 re: fclean all
-	@echo "Rebuilding project..."
+	@printf "$(GREEN)♻️  Project rebuilt successfully!$(RESET)\n"
 
 .PHONY: all clean fclean re
