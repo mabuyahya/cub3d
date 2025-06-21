@@ -24,18 +24,19 @@ LIBFT = ./lib/libft
 
 PRINTF = ./lib/ftprintf
 
-VALIDATION = validate_name_and_argc.c \
+
+VALIDATION_SRC = validate_name_and_argc.c \
 
 PARSING =
 
-RAY_CASTING = 
+RAY_CASTING =
+
+VALIDATION = $(addprefix validation/, $(VALIDATION_SRC))
 
 SRC = $(VALIDATION) \
 	  $(PARSING) \
 	  $(RAY_CASTING) \
 	  main.c
-
-SRC = main.c \
 
 SRC_DIR = srcs
 OBJ_DIR = objs
@@ -44,7 +45,7 @@ SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 DIR_CREATE = mkdir -p $(OBJ_DIR) $(OBJ_DIR)/validation $(OBJ_DIR)/parsing $(OBJ_DIR)/ray_casting
-INCLUDES = -I./includes  -I$(MLX_42)/include/MLX42 -I$(LIBFT) -I$(PRINTF)
+INCLUDES = -I./includes  -I$(MLX_42)/include -I$(LIBFT) -I$(PRINTF)
 
 LIBS = -L$(MLX_42)/build -lmlx42 -ldl -lglfw -pthread -lm -L$(LIBFT) -lft -L$(PRINTF) -lftprintf
 
