@@ -1,19 +1,12 @@
 #include "cub3d.h"
 
-int	vname_and_vextension(int argc, char *filename)
+void	vname_and_vextension(int argc, char *filename)
 {
 	int	len;
 
 	if (argc != 2)
-	{
-		ft_putstr_fd("Error\nUsage: ./cub3d <map_file.cub>\n", 2);
-		return (0);
-	}
+		print_error_type_exit(ERR_INVALID_ARGC);
 	len = ft_strlen(filename);
 	if (ft_strncmp(filename + len - 4, ".cub", 4) != 0)
-	{
-		ft_putstr_fd("Error\nInvalid file extension. Expected .cub\n", 2);
-		return (0);
-	}
-	return (1);
+		print_error_type_exit(ERR_INVALID_EXTENSION);
 }

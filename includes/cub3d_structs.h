@@ -2,7 +2,6 @@
 #ifndef CUB3D_STRUCTS_H
 # define CUB3D_STRUCTS_H
 
-
 typedef struct s_player
 {
 	int x;
@@ -16,6 +15,7 @@ typedef struct s_map
 	char *map;
 	t_player *player;
 }			t_map;
+
 typedef struct s_scene
 {
 
@@ -30,5 +30,12 @@ typedef struct s_scene
 	t_map *map;
 }			t_scene;
 
+enum e_errors
+{
+	ERR_INVALID_EXTENSION = 1,
+	ERR_INVALID_ARGC,
+	ERR_FILE_NOT_FOUND,
+	ERR_MEMORY_ALLOCATION,
+};
 #endif
 
