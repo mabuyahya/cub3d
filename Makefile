@@ -1,4 +1,3 @@
-
 RED     = \033[0;31m
 GREEN   = \033[0;32m
 YELLOW  = \033[0;33m
@@ -19,21 +18,33 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-MLX_42 = ./MLX42
+MLX_42 = ./lib/MLX42
 
 LIBFT = ./lib/libft
 
 PRINTF = ./lib/ftprintf
 
-SRC = main.c
+VALIDATION = validate_name_and_argc.c \
+
+PARSING =
+
+RAY_CASTING = 
+
+SRC = $(VALIDATION) \
+	  $(PARSING) \
+	  $(RAY_CASTING) \
+	  main.c
+
+SRC = main.c \
+
 SRC_DIR = srcs
 OBJ_DIR = objs
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-DIR_CREATE = mkdir -p $(OBJ_DIR)
-INCLUDES = -I./includes  -I$(MLX_42)/include -I$(LIBFT) -I$(PRINTF)
+DIR_CREATE = mkdir -p $(OBJ_DIR) $(OBJ_DIR)/validation $(OBJ_DIR)/parsing $(OBJ_DIR)/ray_casting
+INCLUDES = -I./includes  -I$(MLX_42)/include/MLX42 -I$(LIBFT) -I$(PRINTF)
 
 LIBS = -L$(MLX_42)/build -lmlx42 -ldl -lglfw -pthread -lm -L$(LIBFT) -lft -L$(PRINTF) -lftprintf
 
