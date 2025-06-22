@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
 
-int itrate_on_file(char *line, char *temp, int fd, t_scene *scene)
+static int itrate_on_file(char *line, char *temp, int fd, t_scene *scene)
 {
 	while (line)
 	{

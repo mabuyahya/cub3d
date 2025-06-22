@@ -27,7 +27,7 @@ PRINTF = ./lib/ftprintf
 
 VALIDATION_SRC = validate_name_and_argc.c \
 
-PARSING_SRC = read_file.c  read_2dfile.c \
+PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
 
 
 RAY_CASTING_SRC =
@@ -41,8 +41,8 @@ RAY_CASTING = $(addprefix ray_casting/, $(RAY_CASTING_SRC))
 SRC = $(VALIDATION) \
 	  $(PARSING) \
 	  $(RAY_CASTING) \
-	  main.c \
-	  printing_errors.c \
+	  main.c printing_errors.c  tow_d_array.c freeing.c  
+
 
 SRC_DIR = srcs
 OBJ_DIR = objs

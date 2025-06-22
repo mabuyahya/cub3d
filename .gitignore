@@ -3,3 +3,4 @@
 objs
 lib/*/*.o
 lib/*/*.a
+cub3D
