@@ -33,19 +33,10 @@ void init_scene(char *filename, t_scene *scene)
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
-	if (parse_content(scene))
-	{
-		close(fd);
-		free_all_and_print_exit(scene, ERR_UNNKNOWN_CHARACTER);
-	}
-	// printf("file content\n");
-	// printf("scene->f_color %s\n", scene->f_color);
-	// printf("scene->c_color %s\n", scene->c_color);
-	// printf("scene->north_image %s\n", scene->north_image);
-	// printf("scene->south_image %s\n", scene->south_image);
-	// printf("scene->west_image %s\n", scene->west_image);
-	// printf("scene->east_image %s\n", scene->east_image);
-	parse_map(scene);
-
 	close(fd);
+	if (parse_content(scene))
+		free_all_and_print_exit(scene, ERR_UNNKNOWN_CHARACTER);
+	if (parse_map(scene))
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	validate_map(scene);
 }
