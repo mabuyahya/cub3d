@@ -47,6 +47,5 @@ int parse_map(t_scene *scene)
 	scene->map->map_2d = ft_split(scene->map->map, '\n');
 	if (!scene->map->map_2d)
 		return (1);
-	print_2d_array(scene->map->map_2d);
 	return (0);
 }

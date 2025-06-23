@@ -14,6 +14,10 @@ void check_what_type(int type)
 		ft_putstr_fd("Error: File not completed. Check the content of the file\n", 2);
 	else if (type == ERR_UNNKNOWN_CHARACTER)
 		ft_putstr_fd("Error: Unknown character or dublicate in the file\n", 2);
+	else if (type == ERR_UNNKNOWN_CHARACTER_IN_MAP)
+		ft_putstr_fd("Error: Unknown character the map\n", 2);
+	else if (type == ERR_EMPTY_LIENES)
+		ft_putstr_fd("Error: empty line in the map\n", 2);
 	else
 		ft_putstr_fd("Error: Unknown error\n", 2);
 }

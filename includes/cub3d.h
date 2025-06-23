@@ -16,6 +16,7 @@ void	 free_all_and_exit(t_scene *scene);
 void	free_all_and_print_exit(t_scene *scene, int error_type);
 void	free_all(t_scene *scene);
 // validation folder
+void    validate_map(t_scene *scene);
 void	vname_and_vextension(int argc, char *filename);
 // parsing folder
 void	init_scene(char *filename, t_scene *scene);
