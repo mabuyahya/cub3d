@@ -31,5 +31,11 @@ void init_scene(char *filename, t_scene *scene)
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
+	if (parse_content(scene))
+	{
+		close(fd);
+		free_all_and_print_exit(scene, ERR_UNNKNOWN_CHARACTER);
+	}
+	parse_map(scene);
 	close(fd);
 }

@@ -10,10 +10,11 @@
 // main folder
 void	print_error_type_exit(int type);
 void	print_error_type(int type);
-void    print_2d_array(char **array);
-void    free_2d_array(char **array);
-void free_all_and_exit(t_scene *scene);
-void free_all(t_scene *scene);
+void	print_2d_array(char **array);
+void	free_2d_array(char **array);
+void	 free_all_and_exit(t_scene *scene);
+void	free_all_and_print_exit(t_scene *scene, int error_type);
+void	free_all(t_scene *scene);
 // validation folder
 void	vname_and_vextension(int argc, char *filename);
 // parsing folder
