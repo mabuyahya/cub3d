@@ -10,6 +10,5 @@ int read_2d_file(t_scene *scene)
 		free(scene->file);
 		return (1);
 	}
-	print_2d_array(scene->file_2d);
 	return (0);
 }

@@ -16,7 +16,7 @@ int parse_content(t_scene *scene)
 		}
 		else if (ft_strncmp(line, "C", 1) == 0 && scene->c_color == NULL)
 		{
-			scene->f_color = line;
+			scene->c_color = line;
 		}
 		else if (ft_strncmp(line, "NO", 2) == 0 && scene->north_image == NULL)
 		{

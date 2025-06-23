@@ -8,10 +8,10 @@ scene->file_2d
 
 void free_all(t_scene *scene)
 {
-    if (scene->file)
-        free(scene->file);
-    if (scene->file_2d)
-        free_2d_array(scene->file_2d);
+	if (scene->file)
+		free(scene->file);
+	if (scene->file_2d)
+		free_2d_array(scene->file_2d);
 	if (scene->f_color)
 		free(scene->f_color);
 	if (scene->c_color)
@@ -24,32 +24,41 @@ void free_all(t_scene *scene)
 		free(scene->west_image);
 	if (scene->east_image)
 		free(scene->east_image);
+	if (scene->map)
+	{
+		printf("freeing map\n");
+		if (scene->map->map_2d)
+			free_2d_array(scene->map->map_2d);
+		if (scene->map->map)
+			free(scene->map->map);
+		free(scene->map);
+	}
 }
 
 void free_all_and_exit(t_scene *scene)
 {
-    free_all(scene);
-    exit(EXIT_FAILURE);
+	free_all(scene);
+	exit(EXIT_FAILURE);
 }
 
 void free_all_and_print_exit(t_scene *scene, int error_type)
 {
 	print_error_type(error_type);
-    free_all(scene);
-    exit(EXIT_FAILURE);
+	free_all(scene);
+	exit(EXIT_FAILURE);
 }
 
 void free_2d_array(char **array)
 {
-    int i;
+	int i;
 
-    if (!array)
-        return;
-    i = 0;
-    while (array[i])
-    {
-        free(array[i]);
-        i++;
-    }
-    free(array);
+	if (!array)
+		return;
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

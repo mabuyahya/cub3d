@@ -10,7 +10,9 @@ static void init_struct_with_nulls( t_scene *scene)
 	scene->south_image = NULL;
 	scene->west_image = NULL;
 	scene->east_image = NULL;
-	scene->map = NULL;
+	scene->map = malloc(sizeof(t_map));
+	scene->map->map_2d = NULL;
+	scene->map->map = NULL;
 }
 
 void init_scene(char *filename, t_scene *scene)
@@ -36,6 +38,14 @@ void init_scene(char *filename, t_scene *scene)
 		close(fd);
 		free_all_and_print_exit(scene, ERR_UNNKNOWN_CHARACTER);
 	}
+	// printf("file content\n");
+	// printf("scene->f_color %s\n", scene->f_color);
+	// printf("scene->c_color %s\n", scene->c_color);
+	// printf("scene->north_image %s\n", scene->north_image);
+	// printf("scene->south_image %s\n", scene->south_image);
+	// printf("scene->west_image %s\n", scene->west_image);
+	// printf("scene->east_image %s\n", scene->east_image);
 	parse_map(scene);
+
 	close(fd);
 }

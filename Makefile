@@ -28,7 +28,7 @@ PRINTF = ./lib/ftprintf
 VALIDATION_SRC = validate_name_and_argc.c \
 
 PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
-
+			  parse_content.c parse_map.c
 
 RAY_CASTING_SRC =
 
@@ -41,7 +41,7 @@ RAY_CASTING = $(addprefix ray_casting/, $(RAY_CASTING_SRC))
 SRC = $(VALIDATION) \
 	  $(PARSING) \
 	  $(RAY_CASTING) \
-	  main.c printing_errors.c  tow_d_array.c freeing.c  
+	  main.c printing_errors.c  tow_d_array.c freeing.c
 
 
 SRC_DIR = srcs
@@ -73,7 +73,7 @@ $(PRINTF)/libftprintf.a:
 	@make -C $(PRINTF) >/dev/null
 	@printf "$(GREEN)✓ Printf built successfully$(RESET)\n"
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) includes/cub3d.h includes/cub3d_structs.h
 	@printf "$(CYAN)🔨 Linking $(NAME)...$(RESET)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(LIBS)
 	@printf "$(GREEN)✓ Linking complete$(RESET)\n"

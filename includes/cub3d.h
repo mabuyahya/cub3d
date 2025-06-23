@@ -21,4 +21,6 @@ void	vname_and_vextension(int argc, char *filename);
 void	init_scene(char *filename, t_scene *scene);
 int		read_file(int fd, t_scene *scene);
 int		read_2d_file(t_scene *scene);
+int		parse_content(t_scene *scene);
+int		parse_map(t_scene *scene);
 #endif
