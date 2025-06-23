@@ -26,7 +26,6 @@ void free_all(t_scene *scene)
 		free(scene->east_image);
 	if (scene->map)
 	{
-		printf("freeing map\n");
 		if (scene->map->map_2d)
 			free_2d_array(scene->map->map_2d);
 		if (scene->map->map)
