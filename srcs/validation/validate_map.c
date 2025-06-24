@@ -63,7 +63,8 @@ void check_empty_lines(t_scene *scene)
                 free_all_and_print_exit(scene, ERR_EMPTY_LIENES);
             }
         }
-       i++;
+        if (start[i])
+            i++;
     }
 }
 
