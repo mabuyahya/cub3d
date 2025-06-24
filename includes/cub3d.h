@@ -22,6 +22,9 @@ char	**terpo_split(const char *s, const char *delims);
 int		validate_element (char *element, int is_image, t_scene *scene);
 int		validate_content(t_scene *scene);
 int		validate_path(char *path, t_scene *scene);
+int		validate_color(char *color);
+int		convert_color(char *str);
+int		len_of_array(char **array);
 // parsing folder
 void	init_scene(char *filename, t_scene *scene);
 int		read_file(int fd, t_scene *scene);

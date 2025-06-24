@@ -26,7 +26,8 @@ PRINTF = ./lib/ftprintf
 
 
 VALIDATION_SRC = validate_name_and_argc.c validate_map.c \
-				  validate_content.c validate_path.c
+				  validate_content.c validate_path.c \
+				  validate_color.c
 
 PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
 			  parse_content.c parse_map.c

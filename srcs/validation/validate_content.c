@@ -53,7 +53,15 @@ int validate_element (char *element, int is_image, t_scene *scene)
 		if (validate_path(temp[1], scene))
 		{
 			free_2d_array(temp);
-			return (1);
+			free_all_and_print_exit(scene, ERR_IMAGE_NOT_FOUND);
+		}
+	}
+	else
+	{
+		if (validate_color(temp[1]))
+		{
+			free_2d_array(temp);
+			free_all_and_print_exit(scene, ERR_INVALID_COLOR);
 		}
 	}
 	free_2d_array(temp);
