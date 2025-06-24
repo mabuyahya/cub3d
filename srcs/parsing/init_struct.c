@@ -13,6 +13,7 @@ static void init_struct_with_nulls( t_scene *scene)
 	scene->map = malloc(sizeof(t_map));
 	scene->map->map_2d = NULL;
 	scene->map->map = NULL;
+	scene->map->map_lens = NULL;
 }
 
 void init_scene(char *filename, t_scene *scene)

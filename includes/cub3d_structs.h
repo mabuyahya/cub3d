@@ -13,8 +13,11 @@ typedef struct s_map
 {
 	char **map_2d;
 	char *map;
+	int *map_lens;
 	t_player *player;
 }			t_map;
+
+
 
 typedef struct s_scene
 {
@@ -27,6 +30,7 @@ typedef struct s_scene
 	char *south_image;
 	char *west_image;
 	char *east_image;
+
 	t_map *map;
 }			t_scene;
 
@@ -40,6 +44,14 @@ enum e_errors
 	ERR_UNNKNOWN_CHARACTER,
 	ERR_UNNKNOWN_CHARACTER_IN_MAP,
 	ERR_EMPTY_LIENES,
+	ERR_ONLY_ONE_PLAYER
 
 };
+typedef struct s_pair
+{
+	int x;
+	int y;
+}			t_pair;
+
 #endif
+

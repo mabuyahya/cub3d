@@ -40,14 +40,26 @@ void change_map_space_to_one(t_scene *scene)
         }
         i++;
     }
+    i = 0;
+    while (scene->map->map[i])
+    {
+        if (scene->map->map[i] == ' ')
+        {
+            scene->map->map[i] = '1';
+        }
+        i++;
+    }
 }
 
 void check_empty_lines(t_scene *scene)
 {
    char *start; 
+   char *temp; 
    int  i;
 
-    start = ft_strnstr(scene->file, scene->file_2d[6], ft_strlen(scene->file));
+    temp = ft_strnstr(scene->file, scene->file_2d[6], ft_strlen(scene->file));
+    start = ft_strtrim(temp, "\n");
+    
     i = 0;
     while (start[i])
     {
@@ -60,12 +72,55 @@ void check_empty_lines(t_scene *scene)
             }
             if (start[i] == '\n')
             {
+                free(start);
                 free_all_and_print_exit(scene, ERR_EMPTY_LIENES);
             }
         }
         if (start[i])
             i++;
     }
+    free(start);
+}
+
+void check_only_one_player(t_scene *scene)
+{
+    int i;
+    int player_count;
+
+    i = 0;
+    player_count = 0;
+    while (scene->map->map[i])
+    {
+        if (scene->map->map[i] == 'N' || scene->map->map[i] == 'S' ||
+            scene->map->map[i] == 'E' || scene->map->map[i] == 'W')
+        {
+            player_count++;
+        }
+        i++;
+    }
+    if  (player_count != 1)
+    {
+        free_all_and_print_exit(scene, ERR_ONLY_ONE_PLAYER);
+    }
+}
+
+int *get_map_lens(t_scene *scene)
+{
+	int *len;
+	int i;
+
+	i = 0;
+	len = malloc(sizeof(int) * ft_strlen_2d(scene->map->map_2d) + 1); 
+	if (!len)
+	{
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	while (scene->map->map_2d[i])
+	{
+		len[i] = ft_strlen(scene->map->map_2d[i]);
+		i++;
+	}
+	return (len);
 }
 
 void validate_map(t_scene *scene)
@@ -73,4 +128,10 @@ void validate_map(t_scene *scene)
     change_map_space_to_one(scene);
     check_unwanted_characters(scene);
     check_empty_lines(scene);
+    check_only_one_player(scene);
+    scene->map->map_lens = get_map_lens(scene);
+    check_closeness(scene);
+    // printf("Map:\n%s\n", scene->map->map);
+    // printf("Map2d:\n");
+    // print_2d_array(scene->map->map_2d);
 }
