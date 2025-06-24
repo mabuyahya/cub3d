@@ -38,5 +38,9 @@ void init_scene(char *filename, t_scene *scene)
 		free_all_and_print_exit(scene, ERR_UNNKNOWN_CHARACTER);
 	if (parse_map(scene))
 		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
-	validate_map(scene);
+	if (validate_content(scene))
+		free_all_and_print_exit(scene, ERR_INVALID_CONTENT);
+	// check if path of images is valid
+	// check if colors are valid
+	// validate_map(scene);
 }

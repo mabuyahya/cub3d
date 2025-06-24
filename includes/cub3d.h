@@ -16,12 +16,22 @@ void	 free_all_and_exit(t_scene *scene);
 void	free_all_and_print_exit(t_scene *scene, int error_type);
 void	free_all(t_scene *scene);
 // validation folder
-void    validate_map(t_scene *scene);
+void	validate_map(t_scene *scene);
 void	vname_and_vextension(int argc, char *filename);
+char	**terpo_split(const char *s, const char *delims);
+int		validate_element (char *element, int is_image, t_scene *scene);
+int		validate_content(t_scene *scene);
+int		validate_path(char *path, t_scene *scene);
 // parsing folder
 void	init_scene(char *filename, t_scene *scene);
 int		read_file(int fd, t_scene *scene);
 int		read_2d_file(t_scene *scene);
 int		parse_content(t_scene *scene);
 int		parse_map(t_scene *scene);
+// utilities folder
+int	is_delim(char ch, const char *delims);
+void	*free_all_split(char **f, int num);
+char	*fill_the_word(const char *s, int start, int end);
+void	no_space(int *i, int *j, int *start_word);
+int		count_word(const char *s, const char *delims);
 #endif
