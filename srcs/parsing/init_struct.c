@@ -23,7 +23,7 @@ void init_scene(char *filename, t_scene *scene)
 	init_struct_with_nulls(scene);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		print_error_type_exit(ERR_FILE_NOT_FOUND);
+		free_all_and_print_exit(scene, ERR_FILE_NOT_FOUND);
 	if (read_file(fd, scene))
 	{
 		close(fd);
@@ -41,7 +41,5 @@ void init_scene(char *filename, t_scene *scene)
 		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
 	if (validate_content(scene))
 		free_all_and_print_exit(scene, ERR_INVALID_CONTENT);
-	// check if path of images is valid
-	// check if colors are valid
-	// validate_map(scene);
+	validate_map(scene);
 }

@@ -41,6 +41,12 @@ int validate_element (char *element, int is_image, t_scene *scene)
 	if (!temp)
 		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
 	i = 0;
+	
+	if (!is_image && ft_strlen(temp[0]) != 1)
+	{
+		free_2d_array(temp);
+		return (1);
+	}
 	while (temp[i])
 	{
 		i++;
@@ -52,7 +58,7 @@ int validate_element (char *element, int is_image, t_scene *scene)
 	}
 	if (is_image)
 	{
-		if (validate_path(temp[1], scene))
+		if (validate_path(temp[1], scene) || ft_strlen(temp[0]) != 2)
 		{
 			free_2d_array(temp);
 			free_all_and_print_exit(scene, ERR_IMAGE_NOT_FOUND);
@@ -60,7 +66,7 @@ int validate_element (char *element, int is_image, t_scene *scene)
 	}
 	else
 	{
-		if (validate_color(temp[1]))
+		if (validate_color(temp[1]) || ft_strlen(temp[0]) != 1)
 		{
 			free_2d_array(temp);
 			free_all_and_print_exit(scene, ERR_INVALID_COLOR);

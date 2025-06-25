@@ -59,11 +59,9 @@ void check_closeness(t_scene *scene)
             if (scene->map->map_2d[o.y][o.x] != '1')
             {
                 flood_fill(scene, o.x, o.y);
-                // free_all_and_print_exit(scene, 333);
             }
             o.x++;
         }
         o.y++;
     }
-    printf("the map passed the check\n");
 }

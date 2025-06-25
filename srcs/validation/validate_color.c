@@ -34,7 +34,12 @@ int validate_color(char *color)
 	char	**temp;
 	int		i;
 
-	i = 0;
+	i = -1;
+	if (color[0] == ',' || color[ft_strlen(color) - 1] == ',')
+		return (1);
+	while (color[++i])
+		if (i != 0 && color[i] == ',' && color[i - 1] == ',')
+			return (1);
 	temp = ft_split(color, ',');
 	if (!temp)
 		return (1);
