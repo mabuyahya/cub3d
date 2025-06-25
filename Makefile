@@ -25,22 +25,30 @@ LIBFT = ./lib/libft
 PRINTF = ./lib/ftprintf
 
 
-VALIDATION_SRC = validate_name_and_argc.c validate_map.c flood_fill.c \
+
+VALIDATION_SRC = validate_name_and_argc.c validate_map.c \
+				  validate_content.c validate_path.c \
+				  validate_color.c flood_fill.c
 
 PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
 			  parse_content.c parse_map.c
 
-RAY_CASTING_SRC =
 
+UTILS_SRC = split_utilities.c \
+
+RAY_CASTING_SRC =
 
 VALIDATION = $(addprefix validation/, $(VALIDATION_SRC))
 PARSING = $(addprefix parsing/, $(PARSING_SRC))
 RAY_CASTING = $(addprefix ray_casting/, $(RAY_CASTING_SRC))
+UTILS = $(addprefix utilities/, $(UTILS_SRC))
+
 
 
 SRC = $(VALIDATION) \
 	  $(PARSING) \
 	  $(RAY_CASTING) \
+	  $(UTILS) \
 	  main.c printing_errors.c  tow_d_array.c freeing.c
 
 
@@ -50,7 +58,7 @@ OBJ_DIR = objs
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-DIR_CREATE = mkdir -p $(OBJ_DIR) $(OBJ_DIR)/validation $(OBJ_DIR)/parsing $(OBJ_DIR)/ray_casting
+DIR_CREATE = mkdir -p $(OBJ_DIR) $(OBJ_DIR)/validation $(OBJ_DIR)/parsing $(OBJ_DIR)/ray_casting $(OBJ_DIR)/utilities
 INCLUDES = -I./includes  -I$(MLX_42)/include -I$(LIBFT) -I$(PRINTF)
 
 LIBS = -L$(MLX_42)/build -lmlx42 -ldl -lglfw -pthread -lm -L$(LIBFT) -lft -L$(PRINTF) -lftprintf
