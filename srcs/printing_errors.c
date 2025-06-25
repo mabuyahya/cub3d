@@ -27,7 +27,7 @@ void check_what_type(int type)
 	else if (type == ERR_IMAGE_NOT_FOUND)
 		ft_putstr_fd("Error: Image file not found\n", 2);
 	else if (type == ERR_INVALID_COLOR)
-		ft_putstr_fd("Error: Invalid color format\n", 2);
+		ft_putstr_fd("Error: Invalid color format/malloc faild\n", 2);
 	else
 		ft_putstr_fd("Error: Unknown error\n", 2);
 }

@@ -38,6 +38,8 @@ int validate_element (char *element, int is_image, t_scene *scene)
 	int		i;
 
 	temp = terpo_split(element, " \t");
+	if (!temp)
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
 	i = 0;
 	while (temp[i])
 	{

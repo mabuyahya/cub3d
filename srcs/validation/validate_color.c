@@ -36,6 +36,8 @@ int validate_color(char *color)
 
 	i = 0;
 	temp = ft_split(color, ',');
+	if (!temp)
+		return (1);
 	i = len_of_array(temp);
 	if (i != 3)
 	{
