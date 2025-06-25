@@ -30,6 +30,10 @@ void free_all(t_scene *scene)
 			free_2d_array(scene->map->map_2d);
 		if (scene->map->map)
 			free(scene->map->map);
+		if (scene->map->map_lens)
+		{
+			free(scene->map->map_lens);
+		}
 		free(scene->map);
 	}
 }

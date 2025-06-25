@@ -18,6 +18,10 @@ void check_what_type(int type)
 		ft_putstr_fd("Error: Unknown character the map\n", 2);
 	else if (type == ERR_EMPTY_LIENES)
 		ft_putstr_fd("Error: empty line in the map\n", 2);
+	else if (type == ERR_ONLY_ONE_PLAYER)
+		ft_putstr_fd("Error: the map should contain one player\n", 2);
+	else if (type == ERR_UNCLOSED_MAP)
+		ft_putstr_fd("Error: the map should be closed/surrounded\n", 2);
 	else if (type == ERR_INVALID_CONTENT)
 		ft_putstr_fd("Error: Invalid content in the file\n", 2);
 	else if (type == ERR_IMAGE_NOT_FOUND)
