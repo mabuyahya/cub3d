@@ -24,7 +24,7 @@ void check_unwanted_characters(t_scene *scene)
     }
 }
 
-void change_map_space_to_one(t_scene *scene)
+void change_map_space_to_zeros(t_scene *scene)
 {
     int i;
     int j;
@@ -36,7 +36,7 @@ void change_map_space_to_one(t_scene *scene)
         while(scene->map->map_2d[i][j]) 
         {
             if (scene->map->map_2d[i][j] == ' ')
-                scene->map->map_2d[i][j] = '1';
+                scene->map->map_2d[i][j] = '0';
             j++;
         }
         i++;
@@ -46,7 +46,7 @@ void change_map_space_to_one(t_scene *scene)
     {
         if (scene->map->map[i] == ' ')
         {
-            scene->map->map[i] = '1';
+            scene->map->map[i] = '0';
         }
         i++;
     }
@@ -131,7 +131,7 @@ void validate_map(t_scene *scene)
     check_only_one_player(scene);
     scene->map->map_lens = get_map_lens(scene);
     check_closeness(scene);
-    change_map_space_to_one(scene);
+    change_map_space_to_zeros(scene);
     // printf("Map:\n%s\n", scene->map->map);
     // printf("Map2d:\n");
     // print_2d_array(scene->map->map_2d);

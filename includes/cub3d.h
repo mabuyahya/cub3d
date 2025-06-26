@@ -36,6 +36,7 @@ int		parse_map(t_scene *scene);
 int ft_strlen_2d(char **str);
 char **ft_strdup_2d(char **str);
 // utilities folder
+void change_map_space_to_zeros(t_scene *scene);
 int	is_delim(char ch, const char *delims);
 void	*free_all_split(char **f, int num);
 char	*fill_the_word(const char *s, int start, int end);
