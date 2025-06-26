@@ -1,5 +1,29 @@
 #include "cub3d.h"
 
+void parse_colors_rgb(t_scene *scene)
+{
+	char **temp;
+	char **temp2;
+
+	temp = ft_split(scene->f_color, ',');
+	if (!temp)
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	temp2 = ft_split(scene->c_color, ',');
+	if (!temp2)
+	{
+		free_2d_array(temp);
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	scene->f_color_rgb[0] = ft_atoi(temp[0]);
+	scene->f_color_rgb[1] = ft_atoi(temp[1]);
+	scene->f_color_rgb[2] = ft_atoi(temp[2]);
+	scene->c_color_rgb[0] = ft_atoi(temp2[0]);
+	scene->c_color_rgb[1] = ft_atoi(temp2[1]);
+	scene->c_color_rgb[2] = ft_atoi(temp2[2]);
+	free_2d_array(temp);
+	free_2d_array(temp2);
+}
+
 int parse_content(t_scene *scene)
 {
 	int i;

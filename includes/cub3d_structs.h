@@ -25,7 +25,9 @@ typedef struct s_scene
 	char *file;
 	char **file_2d;
 	char *f_color;
+	int	f_color_rgb[3];
 	char *c_color;
+	int	c_color_rgb[3];
 	char *north_image;
 	char *south_image;
 	char *west_image;

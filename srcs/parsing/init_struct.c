@@ -42,4 +42,5 @@ void init_scene(char *filename, t_scene *scene)
 	if (validate_content(scene))
 		free_all_and_print_exit(scene, ERR_INVALID_CONTENT);
 	validate_map(scene);
+    parse_colors_rgb(scene);
 }

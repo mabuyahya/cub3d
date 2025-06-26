@@ -32,12 +32,12 @@ char	**terpo_split(const char *s, const char *delims)
 	return (f);
 }
 
-int validate_element (char *element, int is_image, t_scene *scene)
+int validate_element(char **element, int is_image, t_scene *scene)
 {
 	char	**temp;
 	int		i;
 
-	temp = terpo_split(element, " \t");
+	temp = terpo_split(*element, " \t");
 	if (!temp)
 		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
 	i = 0;
@@ -72,6 +72,8 @@ int validate_element (char *element, int is_image, t_scene *scene)
 			free_all_and_print_exit(scene, ERR_INVALID_COLOR);
 		}
 	}
+	free(*element);
+	*element = ft_strdup(temp[1]);
 	free_2d_array(temp);
 	return (0);
 }
@@ -85,12 +87,12 @@ int	validate_content(t_scene *scene)
 	{
 		free_all_and_print_exit(scene, ERR_FILE_NOT_COMPLETED);
 	}
-	if (validate_element(scene->f_color, 0, scene) ||
-		validate_element(scene->c_color, 0, scene) ||
-		validate_element(scene->north_image, 1, scene) ||
-		validate_element(scene->south_image, 1, scene) ||
-		validate_element(scene->west_image, 1, scene) ||
-		validate_element(scene->east_image, 1, scene))
+	if (validate_element(&scene->f_color, 0, scene) ||
+		validate_element(&scene->c_color, 0, scene) ||
+		validate_element(&scene->north_image, 1, scene) ||
+		validate_element(&scene->south_image, 1, scene) ||
+		validate_element(&scene->west_image, 1, scene) ||
+		validate_element(&scene->east_image, 1, scene))
 	{
 		return (1);
 	}

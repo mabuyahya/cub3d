@@ -15,13 +15,14 @@ void	free_2d_array(char **array);
 void	 free_all_and_exit(t_scene *scene);
 void	free_all_and_print_exit(t_scene *scene, int error_type);
 void	free_all(t_scene *scene);
+int ft_strlen_2d(char **str);
+char **ft_strdup_2d(char **str);
 // validation folder
 void check_closeness(t_scene *scene);
 void    validate_map(t_scene *scene);
-
 void	vname_and_vextension(int argc, char *filename);
 char	**terpo_split(const char *s, const char *delims);
-int		validate_element (char *element, int is_image, t_scene *scene);
+int		validate_element(char **element, int is_image, t_scene *scene);
 int		validate_content(t_scene *scene);
 int		validate_path(char *path, t_scene *scene);
 int		validate_color(char *color);
@@ -33,8 +34,7 @@ int		read_file(int fd, t_scene *scene);
 int		read_2d_file(t_scene *scene);
 int		parse_content(t_scene *scene);
 int		parse_map(t_scene *scene);
-int ft_strlen_2d(char **str);
-char **ft_strdup_2d(char **str);
+void    parse_colors_rgb(t_scene *scene);
 // utilities folder
 void change_map_space_to_zeros(t_scene *scene);
 int	is_delim(char ch, const char *delims);
