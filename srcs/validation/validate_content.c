@@ -41,7 +41,7 @@ int validate_element(char **element, int is_image, t_scene *scene)
 	if (!temp)
 		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
 	i = 0;
-	
+
 	if (!is_image && ft_strlen(temp[0]) != 1)
 	{
 		free_2d_array(temp);
@@ -81,9 +81,9 @@ int validate_element(char **element, int is_image, t_scene *scene)
 
 int	validate_content(t_scene *scene)
 {
-	if (!(scene->f_color || scene->c_color
-		|| scene->north_image || scene->south_image
-		|| scene->west_image || scene->east_image))
+	if (!scene->f_color || !scene->c_color
+		|| !scene->north_image || !scene->south_image
+		|| !scene->west_image || !scene->east_image)
 	{
 		free_all_and_print_exit(scene, ERR_FILE_NOT_COMPLETED);
 	}
