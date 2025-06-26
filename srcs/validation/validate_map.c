@@ -13,7 +13,8 @@ void check_unwanted_characters(t_scene *scene)
         {
             if (scene->map->map_2d[i][j] != '0' && scene->map->map_2d[i][j] != '1' &&
                 scene->map->map_2d[i][j] != 'N' && scene->map->map_2d[i][j] != 'S' &&
-                scene->map->map_2d[i][j] != 'E' && scene->map->map_2d[i][j] != 'W')
+                scene->map->map_2d[i][j] != 'E' && scene->map->map_2d[i][j] != 'W' &&
+                scene->map->map_2d[i][j] != ' ')
             {
                 free_all_and_print_exit(scene, ERR_UNNKNOWN_CHARACTER_IN_MAP);
             }
@@ -125,12 +126,12 @@ int *get_map_lens(t_scene *scene)
 
 void validate_map(t_scene *scene)
 {
-    change_map_space_to_one(scene);
     check_unwanted_characters(scene);
     check_empty_lines(scene);
     check_only_one_player(scene);
     scene->map->map_lens = get_map_lens(scene);
     check_closeness(scene);
+    change_map_space_to_one(scene);
     // printf("Map:\n%s\n", scene->map->map);
     // printf("Map2d:\n");
     // print_2d_array(scene->map->map_2d);

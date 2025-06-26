@@ -6,10 +6,6 @@
 // give the copy map for the flood fill
 // if you can exit the map then stop everything 
 // if not move to the next position
-
-
-
-
 // void get_map_copy(t_scene *scene,char  ***copy_map)
 // {
 //     *copy_map = ft_strdup_2d(scene->map->map_2d);
@@ -18,20 +14,26 @@
 
 void check_within_boundaries(t_scene *scene, int x, int y)
 {
-    (void) x;
-    if (y == 0 || y == ft_strlen_2d(scene->map->map_2d) - 1)
+    if (x == (int )ft_strlen(scene->map->map_2d[y]) - 1)
         free_all_and_print_exit(scene, ERR_UNCLOSED_MAP);
-    if (scene->map->map_lens[y - 1] < (x + 1) || scene->map->map_2d[y - 1][x] == 0)
+    if (x == 0)
+        free_all_and_print_exit(scene, ERR_UNCLOSED_MAP);
+    if ((y == 0 || y == ft_strlen_2d(scene->map->map_2d) - 1))
+        free_all_and_print_exit(scene, ERR_UNCLOSED_MAP);
+    if (scene->map->map_lens[y - 1] < (x + 1))
             free_all_and_print_exit(scene, ERR_UNCLOSED_MAP);
-    if (scene->map->map_lens[y + 1] < (x + 1) || scene->map->map_2d[y + 1][x] == 0)
+    if (scene->map->map_lens[y + 1] < (x + 1))
             free_all_and_print_exit(scene, ERR_UNCLOSED_MAP);
+    if (scene->map->map_2d[y - 1][x] == ' ' || scene->map->map_2d[y + 1][x] == ' '
+            || scene->map->map_2d[y][x - 1] == ' ' || scene->map->map_2d[y][x + 1] == ' ')
+        free_all_and_print_exit(scene, ERR_UNCLOSED_MAP);
 }
 
 void flood_fill(t_scene *scene, int x, int y)
 {
-    if (x == (int )ft_strlen(scene->map->map_2d[y]) && scene->map->map_2d[y][x] == '0')
-        free_all_and_print_exit(scene, ERR_UNCLOSED_MAP);
-    if (x < 0 || x > (int )ft_strlen(scene->map->map_2d[y]) || y < 0 || y > ft_strlen_2d(scene->map->map_2d))
+    if (x < 0 || x > (int )ft_strlen(scene->map->map_2d[y]) ||
+            y < 0 || y > ft_strlen_2d(scene->map->map_2d) || scene->map->map_2d[y][x] == ' ' 
+            || scene->map->map_2d[y][x] == 0 || scene->map->map_2d[y] == NULL)
         return ;
     if (scene->map->map_2d[y][x] != '1')
     {
