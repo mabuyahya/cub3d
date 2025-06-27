@@ -35,46 +35,59 @@ char	**terpo_split(const char *s, const char *delims)
 int validate_element(char **element, int is_image, t_scene *scene)
 {
 	char	**temp;
+	char	*color_part;
 	int		i;
 
-	temp = terpo_split(*element, " \t");
-	if (!temp)
-		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
-	i = 0;
-
-	if (!is_image && ft_strlen(temp[0]) != 1)
-	{
-		free_2d_array(temp);
-		return (1);
-	}
-	while (temp[i])
-	{
-		i++;
-	}
-	if (i != 2)
-	{
-		free_2d_array(temp);
-		return (1);
-	}
 	if (is_image)
 	{
+		temp = terpo_split(*element, " \t");
+		if (!temp)
+			free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+		i = 0;
+		while (temp[i])
+			i++;
+		if (i != 2)
+		{
+			free_2d_array(temp);
+			return (1);
+		}
 		if (validate_path(temp[1], scene) || ft_strlen(temp[0]) != 2)
 		{
 			free_2d_array(temp);
 			free_all_and_print_exit(scene, ERR_IMAGE_NOT_FOUND);
 		}
+		free(*element);
+		*element = ft_strdup(temp[1]);
+		free_2d_array(temp);
 	}
 	else
 	{
-		if (validate_color(temp[1]) || ft_strlen(temp[0]) != 1)
+		// For colors, we need to handle spaces within the RGB values
+		// Find the first space after the identifier (F or C)
+		i = 0;
+		while ((*element)[i] && (*element)[i] != ' ' && (*element)[i] != '\t')
+			i++;
+		if ((*element)[i] == '\0' || i != 1)
+			return (1);
+		
+		// Skip whitespace
+		while ((*element)[i] && ((*element)[i] == ' ' || (*element)[i] == '\t'))
+			i++;
+		
+		// Get the color part (everything after the identifier and spaces)
+		color_part = ft_strdup(&(*element)[i]);
+		if (!color_part)
+			free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+		
+		if (validate_color(color_part))
 		{
-			free_2d_array(temp);
+			free(color_part);
 			free_all_and_print_exit(scene, ERR_INVALID_COLOR);
 		}
+		
+		free(*element);
+		*element = color_part;
 	}
-	free(*element);
-	*element = ft_strdup(temp[1]);
-	free_2d_array(temp);
 	return (0);
 }
 

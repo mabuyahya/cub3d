@@ -32,6 +32,7 @@ int len_of_array(char **array)
 int validate_color(char *color)
 {
 	char	**temp;
+	char	*trimmed;
 	int		i;
 
 	i = -1;
@@ -52,16 +53,25 @@ int validate_color(char *color)
 	i = 0;
 	while (temp[i])
 	{
-		if (convert_color(temp[i]) == -1)
+		trimmed = ft_strtrim(temp[i], " \t");
+		if (!trimmed)
 		{
 			free_2d_array(temp);
 			return (1);
 		}
-		if (ft_atoi(temp[i]) < 0 || ft_atoi(temp[i]) > 255)
+		if (convert_color(trimmed) == -1)
 		{
+			free(trimmed);
 			free_2d_array(temp);
 			return (1);
 		}
+		if (ft_atoi(trimmed) < 0 || ft_atoi(trimmed) > 255)
+		{
+			free(trimmed);
+			free_2d_array(temp);
+			return (1);
+		}
+		free(trimmed);
 		i++;
 	}
 	free_2d_array(temp);

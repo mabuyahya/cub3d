@@ -4,6 +4,7 @@ void parse_colors_rgb(t_scene *scene)
 {
 	char **temp;
 	char **temp2;
+	char *trimmed;
 
 	temp = ft_split(scene->f_color, ',');
 	if (!temp)
@@ -14,12 +15,60 @@ void parse_colors_rgb(t_scene *scene)
 		free_2d_array(temp);
 		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
 	}
-	scene->f_color_rgb[0] = ft_atoi(temp[0]);
-	scene->f_color_rgb[1] = ft_atoi(temp[1]);
-	scene->f_color_rgb[2] = ft_atoi(temp[2]);
-	scene->c_color_rgb[0] = ft_atoi(temp2[0]);
-	scene->c_color_rgb[1] = ft_atoi(temp2[1]);
-	scene->c_color_rgb[2] = ft_atoi(temp2[2]);
+	trimmed = ft_strtrim(temp[0], " \t");
+	if (!trimmed)
+	{
+		free_2d_array(temp);
+		free_2d_array(temp2);
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	scene->f_color_rgb[0] = ft_atoi(trimmed);
+	free(trimmed);
+	trimmed = ft_strtrim(temp[1], " \t");
+	if (!trimmed)
+	{
+		free_2d_array(temp);
+		free_2d_array(temp2);
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	scene->f_color_rgb[1] = ft_atoi(trimmed);
+	free(trimmed);
+	trimmed = ft_strtrim(temp[2], " \t");
+	if (!trimmed)
+	{
+		free_2d_array(temp);
+		free_2d_array(temp2);
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	scene->f_color_rgb[2] = ft_atoi(trimmed);
+	free(trimmed);
+	trimmed = ft_strtrim(temp2[0], " \t");
+	if (!trimmed)
+	{
+		free_2d_array(temp);
+		free_2d_array(temp2);
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	scene->c_color_rgb[0] = ft_atoi(trimmed);
+	free(trimmed);
+	trimmed = ft_strtrim(temp2[1], " \t");
+	if (!trimmed)
+	{
+		free_2d_array(temp);
+		free_2d_array(temp2);
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	scene->c_color_rgb[1] = ft_atoi(trimmed);
+	free(trimmed);
+	trimmed = ft_strtrim(temp2[2], " \t");
+	if (!trimmed)
+	{
+		free_2d_array(temp);
+		free_2d_array(temp2);
+		free_all_and_print_exit(scene, ERR_MEMORY_ALLOCATION);
+	}
+	scene->c_color_rgb[2] = ft_atoi(trimmed);
+	free(trimmed);
 	free_2d_array(temp);
 	free_2d_array(temp2);
 }
