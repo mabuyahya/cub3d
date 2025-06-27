@@ -27,12 +27,12 @@ void init_scene(char *filename, t_scene *scene)
 	if (read_file(fd, scene))
 	{
 		close(fd);
-		exit(EXIT_FAILURE);
+		free_all_and_exit(scene);
 	}
 	if (read_2d_file(scene))
 	{
 		close(fd);
-		exit(EXIT_FAILURE);
+		free_all_and_exit(scene);
 	}
 	close(fd);
 	if (parse_content(scene))
