@@ -2,12 +2,9 @@
 #ifndef CUB3D_STRUCTS_H
 # define CUB3D_STRUCTS_H
 
-typedef struct s_player
-{
-	int x;
-	int y;
-	char direction;
-}			t_player;
+#define RAYS_COUNT 60
+typedef struct s_scene t_scene;
+typedef struct s_player t_player;
 
 typedef struct s_map
 {
@@ -16,6 +13,44 @@ typedef struct s_map
 	int *map_lens;
 	t_player *player;
 }			t_map;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+} 	t_point;
+ 
+typedef struct s_player 
+{
+	t_point position;
+	char direction;
+	int angle;
+} t_player;
+
+
+typedef struct s_mlx
+{
+	mlx_t *mlx_ptr;
+	mlx_image_t	*img_ptr;
+	char *img_data;
+	int bpp;
+	int size_line;
+	int endian;
+	int width;
+	int height;
+} t_mlx;
+
+typedef struct s_game
+{
+	t_scene *scene;
+	t_player	player;
+	t_mlx		mlx;
+	t_point		plane[RAYS_COUNT];
+	t_point		steps[RAYS_COUNT];
+	int			distance[RAYS_COUNT];
+	int		fov;
+
+} t_game;
 
 
 
@@ -53,11 +88,6 @@ enum e_errors
 	ERR_INVALID_COLOR,
 
 };
-typedef struct s_pair
-{
-	int x;
-	int y;
-}			t_pair;
 
 #endif
 

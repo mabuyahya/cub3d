@@ -16,6 +16,8 @@ void	 free_all_and_exit(t_scene *scene);
 void	free_all_and_print_exit(t_scene *scene, int error_type);
 void	free_all(t_scene *scene);
 int ft_strlen_2d(char **str);
+void free_all_and_exit_terminate(t_game *game);
+void free_all_and_print_exit_terminate(t_game *game, int error_type);
 char **ft_strdup_2d(char **str);
 // validation folder
 void check_closeness(t_scene *scene);
@@ -42,4 +44,6 @@ void	*free_all_split(char **f, int num);
 char	*fill_the_word(const char *s, int start, int end);
 void	no_space(int *i, int *j, int *start_word);
 int		count_word(const char *s, const char *delims);
+//ray casting folder
+void	mlx_setup(t_game *game);
 #endif

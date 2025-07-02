@@ -36,7 +36,7 @@ PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
 
 UTILS_SRC = split_utilities.c printing_errors.c  tow_d_array.c freeing.c \
 
-RAY_CASTING_SRC =
+RAY_CASTING_SRC = mlx_init.c
 
 VALIDATION = $(addprefix validation/, $(VALIDATION_SRC))
 PARSING = $(addprefix parsing/, $(PARSING_SRC))
