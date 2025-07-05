@@ -53,14 +53,14 @@ void check_closeness(t_scene *scene)
 
     o.x = 0;
     o.y = 0;
-    while(scene->map->map_2d[o.y])
+    while(scene->map->map_2d[(int)o.y])
     {
         o.x = 0;
-        while (scene->map->map_2d[o.y][o.x])
+        while (scene->map->map_2d[(int)o.y][(int)o.x])
         {
-            if (scene->map->map_2d[o.y][o.x] != '1')
+            if (scene->map->map_2d[(int)o.y][(int)o.x] != '1')
             {
-                flood_fill(scene, o.x, o.y);
+                flood_fill(scene, (int)o.x, (int)o.y);
             }
             o.x++;
         }

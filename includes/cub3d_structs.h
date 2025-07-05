@@ -3,6 +3,7 @@
 # define CUB3D_STRUCTS_H
 
 #define RAYS_COUNT 60
+#define PI 3.14159265358979323846
 typedef struct s_scene t_scene;
 typedef struct s_player t_player;
 
@@ -16,26 +17,17 @@ typedef struct s_map
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
+	double x;
+	double y;
 } 	t_point;
-
-typedef struct s_player
+ 
+typedef struct s_player 
 {
 	t_point position;
 	char direction;
 	int angle;
 } t_player;
 
-
-// typedef struct mlx
-// {
-	// void*		window;
-	// void*		context;
-	// int32_t		width;
-	// int32_t		height;
-	// double		delta_time;
-// }	mlx_t;
 
 typedef struct s_mlx
 {
@@ -56,6 +48,7 @@ typedef struct s_game
 	t_mlx		mlx;
 	t_point		plane[RAYS_COUNT];
 	t_point		steps[RAYS_COUNT];
+	t_point		p_plane[RAYS_COUNT];
 	int			distance[RAYS_COUNT];
 	int		fov;
 

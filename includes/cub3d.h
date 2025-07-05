@@ -2,6 +2,7 @@
 # define CUB3D_H
 
 # include "libft.h"
+# include <math.h>
 # include "MLX42/MLX42.h"
 # include "ft_printf.h"
 # include "stdio.h"
@@ -46,4 +47,7 @@ void	no_space(int *i, int *j, int *start_word);
 int		count_word(const char *s, const char *delims);
 //ray casting folder
 void	mlx_setup(t_game *game);
+void	get_raycasting_info(t_game *game);
+void	get_plane(t_game *game);
+void game_setup(t_game *game);
 #endif
