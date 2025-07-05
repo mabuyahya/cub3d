@@ -49,7 +49,7 @@ typedef struct s_game
 	t_point		plane[RAYS_COUNT];
 	t_point		steps[RAYS_COUNT];
 	t_point		p_plane[RAYS_COUNT];
-	int			distance[RAYS_COUNT];
+	double			distance[RAYS_COUNT];
 	int		fov;
 
 } t_game;
