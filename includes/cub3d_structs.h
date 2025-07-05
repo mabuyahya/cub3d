@@ -19,14 +19,23 @@ typedef struct s_point
 	int	x;
 	int	y;
 } 	t_point;
- 
-typedef struct s_player 
+
+typedef struct s_player
 {
 	t_point position;
 	char direction;
 	int angle;
 } t_player;
 
+
+// typedef struct mlx
+// {
+	// void*		window;
+	// void*		context;
+	// int32_t		width;
+	// int32_t		height;
+	// double		delta_time;
+// }	mlx_t;
 
 typedef struct s_mlx
 {
