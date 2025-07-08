@@ -49,5 +49,7 @@ int		count_word(const char *s, const char *delims);
 void	mlx_setup(t_game *game);
 void	get_raycasting_info(t_game *game);
 void	get_plane(t_game *game);
-void game_setup(t_game *game);
+void    game_setup(t_game *game);
+void	ray_casting(t_game *game);
+
 #endif

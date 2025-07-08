@@ -3,6 +3,8 @@
 # define CUB3D_STRUCTS_H
 
 #define RAYS_COUNT 60
+#define WIN_WIDTH 600
+#define WIN_HEIGHT 600
 #define PI 3.14159265358979323846
 typedef struct s_scene t_scene;
 typedef struct s_player t_player;
@@ -24,8 +26,7 @@ typedef struct s_point
 typedef struct s_player 
 {
 	t_point position;
-	char direction;
-	int angle;
+	t_point direction;
 } t_player;
 
 
@@ -51,7 +52,7 @@ typedef struct s_game
 	t_point		p_plane[RAYS_COUNT];
 	double			distance[RAYS_COUNT];
 	int		fov;
-
+	t_point		plane_vector;
 } t_game;
 
 

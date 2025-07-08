@@ -1,16 +1,29 @@
 #include "cub3d.h"
 
-double find_player_angle(char direction)
+t_point find_player_direction(char direction)
 {
+    t_point dir;
     if (direction == 'N')
-        return PI / 2; // 90 degrees
+    {
+        dir.x = 0;
+        dir.y = -1;
+    }
     else if (direction == 'S')
-        return 3 * PI / 2; // 270 degrees
+    {
+        dir.x = 0;
+        dir.y = 1;
+    }
     else if (direction == 'E')
-        return 0;
+    {
+        dir.x = 1;
+        dir.y = 0;
+    }
     else if (direction == 'W')
-        return PI; // 180 degrees
-    return -1;
+    {
+        dir.x = -1;
+        dir.y = 0;
+    }
+    return dir;
 }
 
 t_point find_player_position(t_scene *scene)
@@ -42,8 +55,7 @@ t_point find_player_position(t_scene *scene)
 void game_setup(t_game *game)
 {
     game->player.position = find_player_position(game->scene);
-    game->player.angle = find_player_angle(game->scene->map->map_2d[(int)game->player.position.y][(int)game->player.position.x]);
-    game->fov = 60;
-    game->mlx.width = 1000;
-    game->mlx.height = 1000;
+    game->player.direction = find_player_direction(game->scene->map->map_2d[(int)game->player.position.y][(int)game->player.position.x]);
+    game->plane_vector.x = 0.66;
+    game->plane_vector.y = 0;
 }
