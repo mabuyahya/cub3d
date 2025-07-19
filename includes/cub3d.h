@@ -59,5 +59,14 @@ void	free_textures(t_game *game);
 void	free_pixel_map(t_game *game);
 t_cardinal_direction	get_cardinal_direction(int side, double ray_dir_x, double ray_dir_y);
 void	render_frame(t_game *game);
+// controls folder
+void	move_forward(t_game *game);
+void	move_backward(t_game *game);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
+void	rotate_left(t_game *game);
+void	rotate_right(t_game *game);
+void	handle_keypress(mlx_key_data_t keydata, void *param);
+void	handle_close(void *param);
 
 #endif

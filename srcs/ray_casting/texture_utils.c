@@ -55,7 +55,6 @@ void	load_texture_to_buffer(t_game *game, char *path, int texture_index)
 		}
 		y++;
 	}
-	
 	mlx_delete_texture(texture);
 }
 
@@ -63,7 +62,7 @@ void	init_pixel_map(t_game *game)
 {
 	int i;
 
-	game->pixels_map = malloc(sizeof(int*) * WIN_HEIGHT);
+	game->pixels_map = malloc(sizeof(int *) * WIN_HEIGHT);
 	if (!game->pixels_map)
 		free_all_and_print_exit_terminate(game, ERR_MEMORY_ALLOCATION);
 

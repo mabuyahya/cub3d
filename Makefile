@@ -37,7 +37,8 @@ PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
 UTILS_SRC = split_utilities.c printing_errors.c  tow_d_array.c freeing.c \
 
 RAY_CASTING_SRC = mlx_setup.c ray_casting.c game_setup.c \
-				  texture_utils.c render.c
+				  texture_utils.c render.c controls.c \
+				  get_ray_casting_info.c plane.c
 
 
 VALIDATION = $(addprefix validation/, $(VALIDATION_SRC))

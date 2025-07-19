@@ -25,7 +25,6 @@ void    ray_casting(t_game *game)
     int draw_end;
     double wall_x;
     
-    // Texture variables
     t_cardinal_direction dir;
     int tex_x;
     int color;
@@ -33,7 +32,6 @@ void    ray_casting(t_game *game)
     double step;
     int y;
 
-    // Clear the pixel map
     y = 0;
     while (y < WIN_HEIGHT)
     {

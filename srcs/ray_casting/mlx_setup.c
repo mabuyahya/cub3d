@@ -1,15 +1,6 @@
 #include "cub3d.h"
 
-void game_loop(void *param)
-{
-	t_game *game = (t_game *)param;
-	
-	// Perform raycasting
-	ray_casting(game);
-	
-	// Render the frame
-	render_frame(game);
-}
+
 
 void	mlx_setup(t_game *game)
 {
@@ -19,8 +10,6 @@ void	mlx_setup(t_game *game)
 		ft_putendl_fd("Error: MLX initialization failed", 2);
 		free_all_and_exit(game->scene);
 	}
-
-	// Create the main image buffer
 	game->mlx.img_ptr = mlx_new_image(game->mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	if (!game->mlx.img_ptr)
 	{
@@ -28,8 +17,6 @@ void	mlx_setup(t_game *game)
 		mlx_terminate(game->mlx.mlx_ptr);
 		free_all_and_exit(game->scene);
 	}
-
-	// Get the image buffer data
 	game->mlx.img_data = (int *)game->mlx.img_ptr->pixels;
 	game->mlx.width = WIN_WIDTH;
 	game->mlx.height = WIN_HEIGHT;
@@ -38,6 +25,7 @@ void	mlx_setup(t_game *game)
 	init_textures(game);
 	init_pixel_map(game);
 
-	mlx_loop_hook(game->mlx.mlx_ptr, &game_loop, game);
-	mlx_loop(game->mlx.mlx_ptr);
+	// Set up event handlers
+	mlx_key_hook(game->mlx.mlx_ptr, &handle_keypress, game);
+	mlx_close_hook(game->mlx.mlx_ptr, &handle_close, game);
 }
