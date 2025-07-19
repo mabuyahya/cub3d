@@ -54,8 +54,21 @@ t_point find_player_position(t_scene *scene)
 
 void game_setup(t_game *game)
 {
+    int i;
+
     game->player.position = find_player_position(game->scene);
     game->player.direction = find_player_direction(game->scene->map->map_2d[(int)game->player.position.y][(int)game->player.position.x]);
     game->plane_vector.x = 0.66;
     game->plane_vector.y = 0;
+
+    // Initialize texture buffer pointers to NULL
+    i = 0;
+    while (i < NUM_TEXTURES)
+    {
+        game->texture_buffer[i] = NULL;
+        i++;
+    }
+    
+    // Initialize pixel map pointer to NULL
+    game->pixels_map = NULL;
 }

@@ -6,9 +6,9 @@ void build_game(t_scene *scene)
 	t_game game;
 	game.scene = scene;
 	game_setup(&game);
-	// mlx_setup(&game);
+	mlx_setup(&game);
 	ray_casting(&game);
-	// mlx_loop(game.mlx.mlx_ptr);
+	mlx_loop(game.mlx.mlx_ptr);
 	free_all_and_exit_terminate(&game);
 }
 

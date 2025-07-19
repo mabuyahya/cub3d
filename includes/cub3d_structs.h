@@ -6,6 +6,16 @@
 #define WIN_WIDTH 600
 #define WIN_HEIGHT 600
 #define PI 3.14159265358979323846
+#define NUM_TEXTURES 4
+#define TEXTURE_SIZE 64
+typedef enum e_cardinal_direction
+{
+	NORTH = 0,
+	SOUTH = 1,
+	WEST = 2,
+	EAST = 3
+}	t_cardinal_direction;
+
 typedef struct s_scene t_scene;
 typedef struct s_player t_player;
 
@@ -34,7 +44,7 @@ typedef struct s_mlx
 {
 	mlx_t *mlx_ptr;
 	mlx_image_t	*img_ptr;
-	char *img_data;
+	int *img_data;
 	int bpp;
 	int size_line;
 	int endian;
@@ -53,6 +63,8 @@ typedef struct s_game
 	double			distance[RAYS_COUNT];
 	int		fov;
 	t_point		plane_vector;
+	int *texture_buffer[NUM_TEXTURES];
+	int **pixels_map;
 } t_game;
 
 
