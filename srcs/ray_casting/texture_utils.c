@@ -44,8 +44,9 @@ void	load_texture_to_buffer(t_game *game, char *path, int texture_index)
 			pixel_index = y * TEXTURE_SIZE + x;
 			pixel_data = &texture->pixels[(y * texture->width + x) * 4];
 			game->texture_buffer[texture_index][pixel_index] = 
-				(pixel_data[0] << 24) | (pixel_data[1] << 16) | 
-				(pixel_data[2] << 8) | pixel_data[3];
+			    (pixel_data[0] << 24) | (pixel_data[1] << 16) | 
+			    (pixel_data[2] << 8)  | pixel_data[3];
+
 			x++;
 		}
 		y++;

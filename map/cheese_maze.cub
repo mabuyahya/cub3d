@@ -3,8 +3,8 @@ SO images/wolfenstein/color_stone.png
 WE images/wolfenstein/grey_stone.png
 EA images/wolfenstein/purple_stone.png
 
-F 164,169,0
-C 153,204,243
+F 0,0,0
+C 255,255,255
 
 1111111111111111111111111
 1000000000110000000000001

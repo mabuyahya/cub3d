@@ -6,13 +6,15 @@ void	render_frame(t_game *game)
 	int y;
 	int floor_color;
 	int ceiling_color;
+	// MLX42 expects BGRA on Linux
+	floor_color = (game->scene->f_color_rgb[0] << 24) |
+              (game->scene->f_color_rgb[1] << 16) |
+              (game->scene->f_color_rgb[2] << 8)  | 0xFF;
 
-	floor_color = (game->scene->f_color_rgb[0] << 24) | 
-				  (game->scene->f_color_rgb[1] << 16) | 
-				  (game->scene->f_color_rgb[2] << 8) | 0xFF;
-	ceiling_color = (game->scene->c_color_rgb[0] << 24) | 
-					(game->scene->c_color_rgb[1] << 16) | 
-					(game->scene->c_color_rgb[2] << 8) | 0xFF;
+	ceiling_color = (game->scene->c_color_rgb[0] << 24) |
+                (game->scene->c_color_rgb[1] << 16) |
+                (game->scene->c_color_rgb[2] << 8)  | 0xFF;
+
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{

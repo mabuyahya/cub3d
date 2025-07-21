@@ -43,7 +43,6 @@ t_point find_player_position(t_scene *scene)
         j = 0;
         while (scene->map->map_2d[i][j])
         {
-            j++;
             if (scene->map->map_2d[i][j] == 'N' || 
                 scene->map->map_2d[i][j] == 'S' || 
                 scene->map->map_2d[i][j] == 'E' || 
@@ -53,6 +52,7 @@ t_point find_player_position(t_scene *scene)
                 position.y = i + 0.5;  // Center of the cell
                 return position;
             }
+            j++;
         }
         i++;
     }

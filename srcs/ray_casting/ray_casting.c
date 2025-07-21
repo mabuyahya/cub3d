@@ -126,12 +126,7 @@ void    ray_casting(t_game *game)
             pos += step;
             
             color = game->texture_buffer[dir][TEXTURE_SIZE * tex_y + tex_x];
-
-            if (dir == NORTH || dir == SOUTH)
-                color = (color >> 1) & 0x7F7F7F;
-                
-            if (color > 0)
-                game->pixels_map[y][x] = color;
+            game->pixels_map[y][x] = color;
             y++;
         }
         
