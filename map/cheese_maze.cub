@@ -1,7 +1,7 @@
-NO images/north.png
-SO images/south.png
-WE images/west.png
-EA images/east.png     
+NO images/wolfenstein/blue_stone.png
+SO images/wolfenstein/color_stone.png
+WE images/wolfenstein/grey_stone.png
+EA images/wolfenstein/purple_stone.png
 
 F 164,169,0
 C 153,204,243

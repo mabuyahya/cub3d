@@ -20,12 +20,7 @@ void	mlx_setup(t_game *game)
 	game->mlx.img_data = (int *)game->mlx.img_ptr->pixels;
 	game->mlx.width = WIN_WIDTH;
 	game->mlx.height = WIN_HEIGHT;
-
-	// Initialize textures and pixel map
 	init_textures(game);
 	init_pixel_map(game);
-
-	// Set up event handlers
-	mlx_key_hook(game->mlx.mlx_ptr, &handle_keypress, game);
 	mlx_close_hook(game->mlx.mlx_ptr, &handle_close, game);
 }

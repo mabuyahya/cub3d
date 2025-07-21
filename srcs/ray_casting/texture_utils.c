@@ -15,8 +15,6 @@ void	init_textures(t_game *game)
 		}
 		i++;
 	}
-
-	// Load textures from scene paths
 	load_texture_to_buffer(game, game->scene->north_image, NORTH);
 	load_texture_to_buffer(game, game->scene->south_image, SOUTH);
 	load_texture_to_buffer(game, game->scene->west_image, WEST);
@@ -37,7 +35,6 @@ void	load_texture_to_buffer(t_game *game, char *path, int texture_index)
 		free_textures(game);
 		free_all_and_print_exit_terminate(game, ERR_IMAGE_NOT_FOUND);
 	}
-
 	y = 0;
 	while (y < TEXTURE_SIZE && y < (int)texture->height)
 	{
@@ -46,8 +43,6 @@ void	load_texture_to_buffer(t_game *game, char *path, int texture_index)
 		{
 			pixel_index = y * TEXTURE_SIZE + x;
 			pixel_data = &texture->pixels[(y * texture->width + x) * 4];
-			
-			// Convert RGBA to integer (MLX42 uses RGBA format)
 			game->texture_buffer[texture_index][pixel_index] = 
 				(pixel_data[0] << 24) | (pixel_data[1] << 16) | 
 				(pixel_data[2] << 8) | pixel_data[3];
@@ -65,7 +60,6 @@ void	init_pixel_map(t_game *game)
 	game->pixels_map = malloc(sizeof(int *) * WIN_HEIGHT);
 	if (!game->pixels_map)
 		free_all_and_print_exit_terminate(game, ERR_MEMORY_ALLOCATION);
-
 	i = 0;
 	while (i < WIN_HEIGHT)
 	{
@@ -75,7 +69,6 @@ void	init_pixel_map(t_game *game)
 			free_pixel_map(game);
 			free_all_and_print_exit_terminate(game, ERR_MEMORY_ALLOCATION);
 		}
-		// Initialize with floor/ceiling colors
 		memset(game->pixels_map[i], 0, sizeof(int) * WIN_WIDTH);
 		i++;
 	}

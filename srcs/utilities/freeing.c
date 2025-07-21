@@ -70,6 +70,8 @@ void free_all_and_print_exit_terminate(t_game *game, int error_type)
 {
 	print_error_type(error_type);
 	free_all(game->scene);
+	free_textures(game);
+	free_pixel_map(game);
 	mlx_terminate(game->mlx.mlx_ptr);
 	exit(EXIT_FAILURE);
 }
@@ -77,6 +79,8 @@ void free_all_and_print_exit_terminate(t_game *game, int error_type)
 void free_all_and_exit_terminate(t_game *game)
 {
 	free_all(game->scene);
+	free_textures(game);
+	free_pixel_map(game);
 	mlx_terminate(game->mlx.mlx_ptr);
 	exit(EXIT_FAILURE);
 }

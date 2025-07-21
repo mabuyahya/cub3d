@@ -73,7 +73,6 @@ void    ray_casting(t_game *game)
             side_dist_y = ((int)game->player.position.y + 1.0 - game->player.position.y) * delta_dist_y;
         }
 
-        // DDA algorithm
         while (1)
         {
             if (side_dist_x < side_dist_y)
@@ -92,7 +91,6 @@ void    ray_casting(t_game *game)
                 break;
         }
 
-        // Calculate wall distance and line height
         if (side == 0)
             wall_dist = (map_x - game->player.position.x + (1 - step_x) / 2) / ray_dir_x;
         else
@@ -106,26 +104,21 @@ void    ray_casting(t_game *game)
         if (draw_end >= WIN_HEIGHT)
             draw_end = WIN_HEIGHT - 1;
 
-        // Calculate wall_x (where exactly the wall was hit)
         if (side == 0)
             wall_x = game->player.position.y + wall_dist * ray_dir_y;
         else
             wall_x = game->player.position.x + wall_dist * ray_dir_x;
         wall_x -= floor(wall_x);
 
-        // Texture mapping
         dir = get_cardinal_direction(side, ray_dir_x, ray_dir_y);
         tex_x = (int)(wall_x * TEXTURE_SIZE);
 
-        // Flip texture if necessary
         if ((side == 0 && ray_dir_x < 0) || (side == 1 && ray_dir_y > 0))
             tex_x = TEXTURE_SIZE - tex_x - 1;
 
-        // Calculate texture stepping
         step = 1.0 * TEXTURE_SIZE / line_height;
         pos = (draw_start - WIN_HEIGHT / 2 + line_height / 2) * step;
 
-        // Draw the textured wall column
         y = draw_start;
         while (y < draw_end)
         {
@@ -134,13 +127,11 @@ void    ray_casting(t_game *game)
             
             color = game->texture_buffer[dir][TEXTURE_SIZE * tex_y + tex_x];
 
-            // Add shading to north and south walls
             if (dir == NORTH || dir == SOUTH)
                 color = (color >> 1) & 0x7F7F7F;
                 
             if (color > 0)
                 game->pixels_map[y][x] = color;
-
             y++;
         }
         

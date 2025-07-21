@@ -5,7 +5,8 @@ void game_loop(void *param)
 {
 	t_game *game = (t_game *)param;
 	
-	// Check for continuous key presses
+	if (mlx_is_key_down(game->mlx.mlx_ptr, MLX_KEY_ESCAPE))
+		handle_escpress(game);
 	if (mlx_is_key_down(game->mlx.mlx_ptr, MLX_KEY_W))
 		move_forward(game);
 	if (mlx_is_key_down(game->mlx.mlx_ptr, MLX_KEY_S))
@@ -19,10 +20,7 @@ void game_loop(void *param)
 	if (mlx_is_key_down(game->mlx.mlx_ptr, MLX_KEY_RIGHT))
 		rotate_right(game);
 	
-	// Perform raycasting
 	ray_casting(game);
-	
-	// Render the frame
 	render_frame(game);
 }
 

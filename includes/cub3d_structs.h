@@ -8,6 +8,8 @@
 #define PI 3.14159265358979323846
 #define NUM_TEXTURES 4
 #define TEXTURE_SIZE 64
+#define MOVE_SPEED 0.05
+#define ROT_SPEED 0.03
 typedef enum e_cardinal_direction
 {
 	NORTH = 0,
