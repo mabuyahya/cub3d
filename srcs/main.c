@@ -1,5 +1,6 @@
 
 #include "cub3d.h"
+#include <unistd.h>
 
 void game_loop(void *param)
 {
@@ -22,6 +23,7 @@ void game_loop(void *param)
 	
 	ray_casting(game);
 	render_frame(game);
+	usleep(1000);
 }
 
 void build_game(t_scene *scene)

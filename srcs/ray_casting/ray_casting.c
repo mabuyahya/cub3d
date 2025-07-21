@@ -32,13 +32,6 @@ void    ray_casting(t_game *game)
     double step;
     int y;
 
-    y = 0;
-    while (y < WIN_HEIGHT)
-    {
-        memset(game->pixels_map[y], 0, sizeof(int) * WIN_WIDTH);
-        y++;
-    }
-
     x = 0;
     while (x < WIN_WIDTH)
     {
