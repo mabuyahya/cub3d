@@ -2,7 +2,6 @@
 #ifndef CUB3D_STRUCTS_H
 # define CUB3D_STRUCTS_H
 
-#define RAYS_COUNT 60
 #define WIN_WIDTH 1280
 #define WIN_HEIGHT 720
 #define PI 3.14159265358979323846
@@ -60,11 +59,6 @@ typedef struct s_game
 	t_scene *scene;
 	t_player	player;
 	t_mlx		mlx;
-	t_point		plane[RAYS_COUNT];
-	t_point		steps[RAYS_COUNT];
-	t_point		p_plane[RAYS_COUNT];
-	double			distance[RAYS_COUNT];
-	int		fov;
 	t_point		plane_vector;
 	int *texture_buffer[NUM_TEXTURES];
 	int **pixels_map;
@@ -74,7 +68,6 @@ typedef struct s_game
 
 typedef struct s_scene
 {
-
 	char *file;
 	char **file_2d;
 	char *f_color;
@@ -85,7 +78,6 @@ typedef struct s_scene
 	char *south_image;
 	char *west_image;
 	char *east_image;
-
 	t_map *map;
 }			t_scene;
 

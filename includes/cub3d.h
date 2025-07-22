@@ -5,8 +5,7 @@
 # include <math.h>
 # include "MLX42/MLX42.h"
 # include "ft_printf.h"
-# include "stdio.h"
-# include <string.h>
+# include <stdio.h>
 # include "cub3d_structs.h"
 
 // main folder
