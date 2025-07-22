@@ -1,20 +1,27 @@
 #include "cub3d.h"
 
+int make_argb_color(int r, int g, int b, int a)
+{
+	    return (a << 24) | (r << 16) | (g << 8) | b;
+}
+
 void	render_frame(t_game *game)
 {
 	int x;
 	int y;
 	int floor_color;
 	int ceiling_color;
-	// MLX42 expects BGRA on Linux
-	floor_color = (game->scene->f_color_rgb[0] << 24) |
-              (game->scene->f_color_rgb[1] << 16) |
-              (game->scene->f_color_rgb[2] << 8)  | 0xFF;
 
-	ceiling_color = (game->scene->c_color_rgb[0] << 24) |
-                (game->scene->c_color_rgb[1] << 16) |
-                (game->scene->c_color_rgb[2] << 8)  | 0xFF;
-
+	floor_color = make_argb_color(
+		game->scene->f_color_rgb[0],
+		game->scene->f_color_rgb[1],
+		game->scene->f_color_rgb[2],
+		0xFF);
+	ceiling_color = make_argb_color(
+		game->scene->c_color_rgb[0],
+		game->scene->c_color_rgb[1],
+		game->scene->c_color_rgb[2],
+		0xFF);
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
