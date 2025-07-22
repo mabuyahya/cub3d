@@ -22,5 +22,10 @@ void	mlx_setup(t_game *game)
 	game->mlx.height = WIN_HEIGHT;
 	init_textures(game);
 	init_pixel_map(game);
+	if (mlx_image_to_window(game->mlx.mlx_ptr, game->mlx.img_ptr, 0, 0) < 0)
+	{
+		ft_putendl_fd("Error: Failed to display image to window", 2);
+		free_all_and_exit_terminate(game);
+	}
 	mlx_close_hook(game->mlx.mlx_ptr, &handle_close, game);
 }

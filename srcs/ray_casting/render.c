@@ -48,5 +48,4 @@ void	render_frame(t_game *game)
 		}
 		y++;
 	}
-	mlx_image_to_window(game->mlx.mlx_ptr, game->mlx.img_ptr, 0, 0);
 }
