@@ -48,8 +48,6 @@ void	no_space(int *i, int *j, int *start_word);
 int		count_word(const char *s, const char *delims);
 //ray casting folder
 void	mlx_setup(t_game *game);
-void	get_raycasting_info(t_game *game);
-void	get_plane(t_game *game);
 void    game_setup(t_game *game);
 void	ray_casting(t_game *game);
 void	init_textures(t_game *game);
@@ -57,7 +55,7 @@ void	load_texture_to_buffer(t_game *game, char *path, int texture_index);
 void	init_pixel_map(t_game *game);
 void	free_textures(t_game *game);
 void	free_pixel_map(t_game *game);
-t_cardinal_direction	get_cardinal_direction(int side, double ray_dir_x, double ray_dir_y);
+t_direction	get_direction(int side, double ray_dir_x, double ray_dir_y);
 void	render_frame(t_game *game);
 void	move_forward(t_game *game);
 void	move_backward(t_game *game);

@@ -25,7 +25,7 @@ void    ray_casting(t_game *game)
     int draw_end;
     double wall_x;
     
-    t_cardinal_direction dir;
+    t_direction dir;
     int tex_x;
     int color;
     double pos;
@@ -110,7 +110,7 @@ void    ray_casting(t_game *game)
             wall_x = game->player.position.x + wall_dist * ray_dir_x;
         wall_x -= floor(wall_x);
 
-        dir = get_cardinal_direction(side, ray_dir_x, ray_dir_y);
+        dir = get_direction(side, ray_dir_x, ray_dir_y);
         tex_x = (int)(wall_x * TEXTURE_SIZE);
 
         if ((side == 0 && ray_dir_x < 0) || (side == 1 && ray_dir_y > 0))

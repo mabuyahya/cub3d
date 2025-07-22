@@ -3,20 +3,21 @@
 # define CUB3D_STRUCTS_H
 
 #define RAYS_COUNT 60
-#define WIN_WIDTH 600
-#define WIN_HEIGHT 600
+#define WIN_WIDTH 1280
+#define WIN_HEIGHT 720
 #define PI 3.14159265358979323846
 #define NUM_TEXTURES 4
 #define TEXTURE_SIZE 64
 #define MOVE_SPEED 0.05
 #define ROT_SPEED 0.03
-typedef enum e_cardinal_direction
+
+typedef enum e_direction
 {
 	NORTH = 0,
 	SOUTH = 1,
 	WEST = 2,
 	EAST = 3
-}	t_cardinal_direction;
+}	t_direction;
 
 typedef struct s_scene t_scene;
 typedef struct s_player t_player;

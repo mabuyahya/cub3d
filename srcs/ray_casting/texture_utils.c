@@ -44,9 +44,9 @@ void	load_texture_to_buffer(t_game *game, char *path, int texture_index)
 			pixel_index = y * TEXTURE_SIZE + x;
 			pixel_data = &texture->pixels[(y * texture->width + x) * 4];
 			game->texture_buffer[texture_index][pixel_index] =
-				(pixel_data[3] << 24) | // A
-				(pixel_data[2] << 16) | // R
-				(pixel_data[1] << 8) |	// G
+				(pixel_data[3] << 24) |
+				(pixel_data[2] << 16) | 
+				(pixel_data[1] << 8) |
 				(pixel_data[0]);
 				x++;
 		}
@@ -113,16 +113,16 @@ void	free_pixel_map(t_game *game)
 	game->pixels_map = NULL;
 }
 
-t_cardinal_direction	get_cardinal_direction(int side, double ray_dir_x, double ray_dir_y)
+t_direction	get_direction(int side, double ray_dir_x, double ray_dir_y)
 {
-	if (side == 0) // vertical wall
+	if (side == 0)
 	{
 		if (ray_dir_x > 0)
 			return (EAST);
 		else
 			return (WEST);
 	}
-	else // horizontal wall
+	else
 	{
 		if (ray_dir_y > 0)
 			return (SOUTH);
