@@ -9,12 +9,12 @@ t_point find_player_direction(char direction)
     if (direction == 'N')
     {
         dir.x = 0;
-        dir.y = 1;
+        dir.y = -1;
     }
     else if (direction == 'S')
     {
         dir.x = 0;
-        dir.y = -1;
+        dir.y = 1;
     }
     else if (direction == 'E')
     {
@@ -65,12 +65,12 @@ t_point find_plane_direction(t_point direction)
     
     plane_vector.x = 0;
     plane_vector.y = 0;
-    if (direction.x == 0 && direction.y == 1)
+    if (direction.x == 0 && direction.y == -1)
     {
         plane_vector.x = 0.66;
         plane_vector.y = 0;
     }
-    else if (direction.x == 0 && direction.y == -1)
+    else if (direction.x == 0 && direction.y == 1)
     {
         plane_vector.x = -0.66;
         plane_vector.y = 0;
