@@ -8,7 +8,7 @@
 #define NUM_TEXTURES 4
 #define TEXTURE_SIZE 64
 #define MOVE_SPEED 0.05
-#define ROT_SPEED 0.03
+#define ROT_SPEED 0.045
 
 typedef enum e_direction
 {
@@ -17,6 +17,37 @@ typedef enum e_direction
 	WEST = 2,
 	EAST = 3
 }	t_direction;
+
+typedef struct s_ray_vars
+{
+	int x;
+	double ray_dir_x;
+	double ray_dir_y;
+	double delta_dist_x;
+	double delta_dist_y;
+	int step_x;
+	int step_y;
+	double side_dist_x;
+	double side_dist_y;
+	int map_x;
+	int map_y;
+	int side;
+	double wall_dist;
+}	t_ray_vars;
+
+typedef struct s_wall_texture_vars
+{
+	int line_height;
+	int draw_start;
+	int draw_end;
+	double wall_x;
+	t_direction dir;
+	int tex_x;
+	int color;
+	double pos;
+	double step;
+	int y;
+}	t_wall_texture_vars;
 
 typedef struct s_scene t_scene;
 typedef struct s_player t_player;

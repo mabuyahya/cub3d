@@ -64,5 +64,7 @@ void	rotate_left(t_game *game);
 void	rotate_right(t_game *game);
 void	handle_escpress(void *param);
 void	handle_close(void *param);
-
+void    clear_pixel_map(t_game *game);
+void    setup_ray_params(t_game *game, int x, t_ray_vars *ray);
+void    setup_step_and_side_dist(t_game *game, t_ray_vars *ray);
 #endif

@@ -9,12 +9,12 @@ t_point find_player_direction(char direction)
     if (direction == 'N')
     {
         dir.x = 0;
-        dir.y = -1;  // Fixed: North should be negative Y
+        dir.y = 1;
     }
     else if (direction == 'S')
     {
         dir.x = 0;
-        dir.y = 1;   // Fixed: South should be positive Y
+        dir.y = -1;
     }
     else if (direction == 'E')
     {
@@ -48,8 +48,8 @@ t_point find_player_position(t_scene *scene)
                 scene->map->map_2d[i][j] == 'E' || 
                 scene->map->map_2d[i][j] == 'W')
             {
-                position.x = j + 0.5;  // Center of the cell
-                position.y = i + 0.5;  // Center of the cell
+                position.x = j + 0.5;
+                position.y = i + 0.5;
                 return position;
             }
             j++;
@@ -65,22 +65,22 @@ t_point find_plane_direction(t_point direction)
     
     plane_vector.x = 0;
     plane_vector.y = 0;
-    if (direction.x == 0 && direction.y == -1) // North
+    if (direction.x == 0 && direction.y == 1)
     {
         plane_vector.x = 0.66;
         plane_vector.y = 0;
     }
-    else if (direction.x == 0 && direction.y == 1) // South
+    else if (direction.x == 0 && direction.y == -1)
     {
         plane_vector.x = -0.66;
         plane_vector.y = 0;
     }
-    else if (direction.x == 1 && direction.y == 0) // East
+    else if (direction.x == 1 && direction.y == 0)
     {
         plane_vector.x = 0;
         plane_vector.y = 0.66;
     }
-    else if (direction.x == -1 && direction.y == 0) // West
+    else if (direction.x == -1 && direction.y == 0)
     {
         plane_vector.x = 0;
         plane_vector.y = -0.66;

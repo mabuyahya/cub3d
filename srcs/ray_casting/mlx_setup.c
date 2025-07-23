@@ -1,7 +1,5 @@
 #include "cub3d.h"
 
-
-
 void	mlx_setup(t_game *game)
 {
 	game->mlx.mlx_ptr = mlx_init(WIN_WIDTH, WIN_HEIGHT, "Cub3D", true);
