@@ -6,7 +6,7 @@
 /*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:02:56 by mabuyahy          #+#    #+#             */
-/*   Updated: 2025/07/23 17:19:42 by mabuyahy         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:03:56 by mabuyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ void	game_setup(t_game *game)
 	int	temp;
 
 	i = 0;
+	game->player.position = find_player_position(game->scene);
 	temp = (int)game->player.position.x;
 	j = game->scene->map->map_2d[(int)game->player.position.y][temp];
-	game->player.position = find_player_position(game->scene);
 	game->player.direction = find_player_direction(j);
 	game->plane_vector = find_plane_direction(game->player.direction);
 	while (i < NUM_TEXTURES)
