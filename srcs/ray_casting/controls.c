@@ -26,7 +26,7 @@ void move_backward(t_game *game)
         game->player.position.x = new_x;
 }
 
-void move_left(t_game *game)
+void move_right(t_game *game)
 {
     double new_x;
     double new_y;
@@ -39,7 +39,7 @@ void move_left(t_game *game)
         game->player.position.x = new_x;
 }
 
-void move_right(t_game *game)
+void move_left(t_game *game)
 {
     double new_x;
     double new_y;
