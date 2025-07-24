@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 09:24:27 by mabuyahy          #+#    #+#             */
+/*   Updated: 2025/07/24 09:27:39 by mabuyahy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	init_textures(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < NUM_TEXTURES)
 	{
-		game->texture_buffer[i] = malloc(sizeof(int) * TEXTURE_SIZE * TEXTURE_SIZE);
+		game->texture_buffer[i] = malloc(sizeof(int) * TEXTURE_SIZE
+				* TEXTURE_SIZE);
 		if (!game->texture_buffer[i])
 		{
 			free_textures(game);
@@ -21,49 +34,49 @@ void	init_textures(t_game *game)
 	load_texture_to_buffer(game, game->scene->east_image, EAST);
 }
 
-static void	convert_texture_to_buffer(t_game *game, mlx_texture_t *texture, int texture_index)
+static void	convert_texture_to_buffer(t_game *game, mlx_texture_t *texture,
+		int texture_index)
 {
-    int				x;
-    int				y;
-    int				pixel_index;
-    uint8_t			*pixel_data;
+	int		x;
+	int		y;
+	int		pixel_index;
+	uint8_t	*pixel_data;
 
-    y = 0;
-    while (y < TEXTURE_SIZE && y < (int)texture->height)
-    {
-        x = 0;
-        while (x < TEXTURE_SIZE && x < (int)texture->width)
-        {
-            pixel_index = y * TEXTURE_SIZE + x;
-            pixel_data = &texture->pixels[(y * texture->width + x) * 4];
-            game->texture_buffer[texture_index][pixel_index] =
-                (pixel_data[3] << 24) |
-                (pixel_data[2] << 16) | 
-                (pixel_data[1] << 8) |
-                (pixel_data[0]);
-            x++;
-        }
-        y++;
-    }
+	y = 0;
+	while (y < TEXTURE_SIZE && y < (int)texture->height)
+	{
+		x = 0;
+		while (x < TEXTURE_SIZE && x < (int)texture->width)
+		{
+			pixel_index = y * TEXTURE_SIZE + x;
+			pixel_data = &texture->pixels[(y * texture->width + x) * 4];
+			game->texture_buffer[texture_index][pixel_index]
+				= (pixel_data[3] << 24)
+				| (pixel_data[2] << 16)
+				| (pixel_data[1] << 8) | (pixel_data[0]);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	load_texture_to_buffer(t_game *game, char *path, int texture_index)
 {
-    mlx_texture_t	*texture;
+	mlx_texture_t	*texture;
 
-    texture = mlx_load_png(path);
-    if (!texture)
-    {
-        free_textures(game);
-        free_all_and_print_exit_terminate(game, ERR_IMAGE_NOT_FOUND);
-    }
-    convert_texture_to_buffer(game, texture, texture_index);
-    mlx_delete_texture(texture);
+	texture = mlx_load_png(path);
+	if (!texture)
+	{
+		free_textures(game);
+		free_all_and_print_exit_terminate(game, ERR_IMAGE_NOT_FOUND);
+	}
+	convert_texture_to_buffer(game, texture, texture_index);
+	mlx_delete_texture(texture);
 }
 
 void	init_pixel_map(t_game *game)
 {
-	int i;
+	int	i;
 
 	game->pixels_map = malloc(sizeof(int *) * WIN_HEIGHT);
 	if (!game->pixels_map)
