@@ -6,12 +6,11 @@
 /*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:28:44 by mabuyahy          #+#    #+#             */
-/*   Updated: 2025/07/24 12:22:59 by mabuyahy         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:31:58 by mabuyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-	// f = ft_calloc(count_word(s, delims) + 1, sizeof(char *));
 
 char	**terpo_split(const char *s, const char *delims)
 {
