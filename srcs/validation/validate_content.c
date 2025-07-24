@@ -6,7 +6,7 @@
 /*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:28:44 by mabuyahy          #+#    #+#             */
-/*   Updated: 2025/07/24 10:43:02 by mabuyahy         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:22:59 by mabuyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	**terpo_split(const char *s, const char *delims)
 	int		j;
 	int		start_word;
 
-	if (!no_space(&i, &j, &start_word, &f, (char *)s))
+	i = 0;
+	if (!no_space(&j, &start_word, &f, (char *)s))
 		return (NULL);
 	while ((size_t)i <= ft_strlen(s))
 	{

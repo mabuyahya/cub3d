@@ -6,7 +6,7 @@
 /*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 09:47:35 by mabuyahy          #+#    #+#             */
-/*   Updated: 2025/07/24 10:42:27 by mabuyahy         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:23:15 by mabuyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,11 @@ char	*fill_the_word(const char *s, int start, int end)
 	return (c);
 }
 
-int	no_space(int *i, int *j, int *start_word, char ***f, char *s)
+int	no_space(int *j, int *start_word, char ***f, char *s)
 {
 	*f = ft_calloc(count_word(s, " \t") + 1, sizeof(char *));
 	if (!*f)
 		return (0);
-	*i = 0;
 	*j = 0;
 	*start_word = -1;
 	return (1);
