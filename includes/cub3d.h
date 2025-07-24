@@ -31,6 +31,7 @@ int		validate_path(char *path, t_scene *scene);
 int		validate_color(char *color);
 int		convert_color(char *str);
 int		len_of_array(char **array);
+int	*get_map_lens(t_scene *scene);
 // parsing folder
 void	init_scene(char *filename, t_scene *scene);
 int		read_file(int fd, t_scene *scene);
@@ -43,7 +44,7 @@ void change_map_space_to_zeros(t_scene *scene);
 int	is_delim(char ch, const char *delims);
 void	*free_all_split(char **f, int num);
 char	*fill_the_word(const char *s, int start, int end);
-void	no_space(int *i, int *j, int *start_word);
+int     no_space(int *i, int *j, int *start_word, char ***f, char *s);
 int		count_word(const char *s, const char *delims);
 //ray casting folder
 void	mlx_setup(t_game *game);

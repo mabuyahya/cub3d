@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_color.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 10:19:30 by mabuyahy          #+#    #+#             */
+/*   Updated: 2025/07/24 10:21:46 by mabuyahy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	convert_color(char *str)
@@ -17,7 +29,7 @@ int	convert_color(char *str)
 	return (res);
 }
 
-int len_of_array(char **array)
+int	len_of_array(char **array)
 {
 	int	i;
 
@@ -27,13 +39,9 @@ int len_of_array(char **array)
 	return (i);
 }
 
-
-
-int validate_color(char *color)
+static int	validate_color_format(char *color)
 {
-	char	**temp;
-	char	*trimmed;
-	int		i;
+	int	i;
 
 	i = -1;
 	if (color[0] == ',' || color[ft_strlen(color) - 1] == ',')
@@ -41,6 +49,43 @@ int validate_color(char *color)
 	while (color[++i])
 		if (i != 0 && color[i] == ',' && color[i - 1] == ',')
 			return (1);
+	return (0);
+}
+
+static int	validate_color_components(char **temp)
+{
+	char	*trimmed;
+	int		i;
+
+	i = 0;
+	while (temp[i])
+	{
+		trimmed = ft_strtrim(temp[i], " \t");
+		if (!trimmed)
+			return (1);
+		if (convert_color(trimmed) == -1)
+		{
+			free(trimmed);
+			return (1);
+		}
+		if (ft_atoi(trimmed) < 0 || ft_atoi(trimmed) > 255)
+		{
+			free(trimmed);
+			return (1);
+		}
+		free(trimmed);
+		i++;
+	}
+	return (0);
+}
+
+int	validate_color(char *color)
+{
+	char	**temp;
+	int		i;
+
+	if (validate_color_format(color))
+		return (1);
 	temp = ft_split(color, ',');
 	if (!temp)
 		return (1);
@@ -50,29 +95,10 @@ int validate_color(char *color)
 		free_2d_array(temp);
 		return (1);
 	}
-	i = 0;
-	while (temp[i])
+	if (validate_color_components(temp))
 	{
-		trimmed = ft_strtrim(temp[i], " \t");
-		if (!trimmed)
-		{
-			free_2d_array(temp);
-			return (1);
-		}
-		if (convert_color(trimmed) == -1)
-		{
-			free(trimmed);
-			free_2d_array(temp);
-			return (1);
-		}
-		if (ft_atoi(trimmed) < 0 || ft_atoi(trimmed) > 255)
-		{
-			free(trimmed);
-			free_2d_array(temp);
-			return (1);
-		}
-		free(trimmed);
-		i++;
+		free_2d_array(temp);
+		return (1);
 	}
 	free_2d_array(temp);
 	return (0);
