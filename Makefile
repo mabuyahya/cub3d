@@ -31,8 +31,7 @@ VALIDATION_SRC = validate_name_and_argc.c validate_map.c \
 				  validate_color.c flood_fill.c
 
 PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
-			  parse_content.c parse_map.c
-
+			  parse_content.c parse_map.c parse_colors_rgb.c \
 
 UTILS_SRC = split_utilities.c printing_errors.c  tow_d_array.c freeing.c freeing_texture.c freeing_2.c\
 

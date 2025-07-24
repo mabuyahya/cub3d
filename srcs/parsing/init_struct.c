@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 09:50:38 by mabuyahy          #+#    #+#             */
+/*   Updated: 2025/07/24 09:50:39 by mabuyahy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-static void init_struct_with_nulls( t_scene *scene)
+static void	init_struct_with_nulls(t_scene *scene)
 {
 	scene->file = NULL;
 	scene->file_2d = NULL;
@@ -16,9 +28,9 @@ static void init_struct_with_nulls( t_scene *scene)
 	scene->map->map_lens = NULL;
 }
 
-void init_scene(char *filename, t_scene *scene)
+void	init_scene(char *filename, t_scene *scene)
 {
-	int fd;
+	int	fd;
 
 	init_struct_with_nulls(scene);
 	fd = open(filename, O_RDONLY);
@@ -42,5 +54,5 @@ void init_scene(char *filename, t_scene *scene)
 	if (validate_content(scene))
 		free_all_and_print_exit(scene, ERR_INVALID_CONTENT);
 	validate_map(scene);
-    parse_colors_rgb(scene);
+	parse_colors_rgb(scene);
 }
