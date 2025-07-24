@@ -1,6 +1,17 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_utilities.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 09:47:35 by mabuyahy          #+#    #+#             */
+/*   Updated: 2025/07/24 09:47:38 by mabuyahy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
+
 int	is_delim(char ch, const char *delims)
 {
 	while (*delims)
@@ -14,7 +25,9 @@ int	is_delim(char ch, const char *delims)
 
 void	*free_all_split(char **f, int num)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (i < num)
 		free(f[i++]);
 	free(f);
@@ -24,8 +37,9 @@ void	*free_all_split(char **f, int num)
 char	*fill_the_word(const char *s, int start, int end)
 {
 	char	*c;
-	int		i = 0;
+	int		i;
 
+	i = 0;
 	c = malloc(end - start + 1);
 	if (!c)
 		return (NULL);
@@ -44,10 +58,13 @@ void	no_space(int *i, int *j, int *start_word)
 
 int	count_word(const char *s, const char *delims)
 {
-	int	num = 0;
-	int	trigger = 0;
-	int	i = 0;
+	int	num;
+	int	trigger;
+	int	i;
 
+	num = 0;
+	trigger = 0;
+	i = 0;
 	while (s[i])
 	{
 		if (!is_delim(s[i], delims) && trigger == 0)

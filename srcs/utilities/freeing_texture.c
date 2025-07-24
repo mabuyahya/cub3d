@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   freeing_texture.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 09:31:30 by mabuyahy          #+#    #+#             */
+/*   Updated: 2025/07/24 09:31:34 by mabuyahy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	free_textures(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < NUM_TEXTURES)
@@ -18,11 +30,10 @@ void	free_textures(t_game *game)
 
 void	free_pixel_map(t_game *game)
 {
-	int i;
+	int	i;
 
 	if (!game->pixels_map)
-		return;
-
+		return ;
 	i = 0;
 	while (i < WIN_HEIGHT)
 	{

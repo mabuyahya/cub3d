@@ -34,7 +34,7 @@ PARSING_SRC = read_file.c  read_2d_file.c init_struct.c \
 			  parse_content.c parse_map.c
 
 
-UTILS_SRC = split_utilities.c printing_errors.c  tow_d_array.c freeing.c freeing_texture.c \
+UTILS_SRC = split_utilities.c printing_errors.c  tow_d_array.c freeing.c freeing_texture.c freeing_2.c\
 
 RAY_CASTING_SRC = mlx_setup.c ray_casting.c game_setup.c \
 				  texture_utils.c render.c controls.c controls_rotate.c ray_casting_setup.c \
