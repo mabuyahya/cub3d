@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/24 15:54:57 by mabuyahy          #+#    #+#             */
+/*   Updated: 2025/07/24 15:55:04 by mabuyahy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
-void game_loop(void *param)
+void	game_loop(void *param)
 {
-	t_game *game = (t_game *)param;
-	
+	t_game	*game;
+
+	game = (t_game *)param;
 	if (mlx_is_key_down(game->mlx.mlx_ptr, MLX_KEY_ESCAPE))
 		handle_escpress(game);
 	if (mlx_is_key_down(game->mlx.mlx_ptr, MLX_KEY_W))
@@ -19,14 +31,14 @@ void game_loop(void *param)
 		rotate_left(game);
 	if (mlx_is_key_down(game->mlx.mlx_ptr, MLX_KEY_RIGHT))
 		rotate_right(game);
-	
 	ray_casting(game);
 	render_frame(game);
 }
 
-void build_game(t_scene *scene)
+void	build_game(t_scene *scene)
 {
-	t_game game;
+	t_game	game;
+
 	game.scene = scene;
 	game_setup(&game);
 	mlx_setup(&game);
@@ -36,12 +48,12 @@ void build_game(t_scene *scene)
 	free_all_and_exit_terminate(&game);
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_scene scene;
+	t_scene	scene;
+
 	vname_and_vextension(argc, argv[1]);
-	init_scene(argv[1],&scene);
+	init_scene(argv[1], &scene);
 	build_game(&scene);
 	return (0);
 }
