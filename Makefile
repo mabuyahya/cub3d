@@ -65,7 +65,7 @@ INCLUDES = -I./includes  -I$(MLX_42)/include -I$(LIBFT) -I$(PRINTF)
 LIBS = -L$(MLX_42)/build -lmlx42 -ldl -lglfw -pthread -lm -L$(LIBFT) -lft -L$(PRINTF) -lftprintf
 
 all:  $(MLX_42)/build/libmlx42.a $(LIBFT)/libft.a $(PRINTF)/libftprintf.a $(NAME)
-	@printf "$(GREEN)$(BOLD)✅ cub3D is ready!$(RESET)\n"
+	@printf "$(PURPLE)$(BOLD)✅ cub3D is ready!$(RESET)\n"
 
 $(MLX_42)/build/libmlx42.a:
 	@printf "$(CYAN)🚀 Building MLX42...$(RESET)\n"
@@ -83,13 +83,13 @@ $(PRINTF)/libftprintf.a:
 	@printf "$(GREEN)✓ Printf built successfully$(RESET)\n"
 
 $(NAME): $(OBJS) includes/cub3d.h includes/cub3d_structs.h
-	@printf "$(CYAN)🔨 Linking $(NAME)...$(RESET)\n"
+	@printf "$(YELLOW)🔨 Linking $(NAME)...$(RESET)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(LIBS)
 	@printf "$(GREEN)✓ Linking complete$(RESET)\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(DIR_CREATE)
-	@printf "$(CYAN)⚡ Compiling $<...$(RESET)\r"
+	@printf "$(CYAN)⚡ Compiling $<...$(RESET)\n"
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:

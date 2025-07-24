@@ -6,7 +6,7 @@
 /*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:31:04 by mabuyahy          #+#    #+#             */
-/*   Updated: 2025/07/24 12:17:27 by mabuyahy         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:39:04 by mabuyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	check_empty_lines(t_scene *scene)
 	int		i;
 
 	temp = ft_strnstr(scene->file, scene->file_2d[6], ft_strlen(scene->file));
-	start = ft_strtrim(temp, "\n");
+	start = ft_strtrim(temp, "\t \n");
 	i = 0;
 	while (start[i])
 	{
